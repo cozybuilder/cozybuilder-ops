@@ -29,7 +29,7 @@
 | homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | (미작성) |
 | ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | (미작성) |
 | gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | (미작성) |
-| ClipMiner | 🟢 active | `master` | (원격 미연결) | (미작성) |
+| ClipMiner | 🟢 active | `main` | github.com/cozybuilder/clipminer | docs/STATUS.md |
 | movieminer | 🔵 candidate | (git 미초기화) | (없음) | (미작성) |
 | house_rental | 📋 planned | (git 미초기화) | (없음) | (미작성) |
 | ShortsFactory | 📋 planned | (코드/폴더 없음) | (없음) | (미작성) |
@@ -40,7 +40,7 @@
 
 - 위 데이터의 출처는 채팅 기억이 아니라 디스크의 실제 `.git` 메타데이터 + 코비 승인이다.
 - **ClipMiner**(🟢)는 개발 공백이 있으나, 홈페이지 등록·웹서비스 편입 예정으로 장기 active로 간주한다.
-- **ClipMiner**는 원격 미연결 상태 — GitHub 원격 생성·연결은 후속 작업으로 분리.
+- **ClipMiner**: 2026-06-26 Common Brain 편입 완료(README/CLAUDE/docs/STATUS), GitHub(cozybuilder/clipminer) 초기 push 완료, 브랜치 main. 폴더명(ClipMiner→clipminer) 변경은 후속.
 - **movieminer**(🔵)는 실제 앱 코드가 있으나 git 미초기화 — 정체 확정 후 분류한다.
 - **house_rental / ShortsFactory**(📋)는 개발 전 — 착수 시 active로 승격한다.
 - 폴더명 kebab-case 통일, STATUS.md 포인터 연결은 후속 작업으로 분리한다.
