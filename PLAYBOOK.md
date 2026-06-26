@@ -106,6 +106,32 @@
 3. 첫 커밋을 만든다.
 4. 원격 저장소를 만들고 연결한 뒤 push 한다 (GitHub Second).
 
+## P5. 표준 진화 절차 (Standard Evolution Process)
+
+> 철학·원칙은 [GLOBAL.md §8 Standards Evolve Through Practice](GLOBAL.md)가 소유한다 — 여기서는 절차만 다룬다.
+> 이 절차를 완료해 commit/push 되기 전까지, 합의는 공식 기준정보가 아니다.
+
+```
+문제 발견
+   ↓
+패턴 확인 (실전에서 반복 등장 확인)
+   ↓
+코지(CEO) 승인
+   ↓
+코비(PM) 방향 정리 (저장 문서 결정: GLOBAL=철학·원칙 / PLAYBOOK=절차)
+   ↓
+클로(DEV) 문서 반영 + STATUS·현재 상태 기록
+   ↓
+commit
+   ↓
+push
+   ↓
+공식 기준 승격
+```
+
+- 저장 위치 판단: 철학·원칙·표준은 [GLOBAL.md](GLOBAL.md), 반복 절차는 본 문서. 중복 금지([GLOBAL.md §2](GLOBAL.md)).
+- 승격 요건: 최소 1회 실전 적용 또는 충분한 합의([GLOBAL.md §8.1](GLOBAL.md)).
+
 ---
 
 _Common Brain OS v1.0 · cozybuilder-ops_
