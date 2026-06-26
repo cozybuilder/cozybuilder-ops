@@ -37,6 +37,7 @@
 | 지시·보고 형식 템플릿 | **PLAYBOOK.md §P3** |
 | 기준 진화 철학 · 역할 | **GLOBAL.md §8** (이 문서) |
 | 기준 진화 절차 | **PLAYBOOK.md §P5** |
+| 프로그램 통합 아키텍처 (정책) | **PROGRAM_INTEGRATION.md** |
 
 ---
 

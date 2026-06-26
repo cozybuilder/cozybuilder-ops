@@ -25,6 +25,7 @@
 | [GLOBAL.md](GLOBAL.md) | 헌법 · 전 조직 표준/규칙 | 원칙, 명명/브랜치/커밋 규약, 문서 소유권 |
 | [PLAYBOOK.md](PLAYBOOK.md) | 운영 절차 · 반복 워크플로 | "어떻게 하는가" 절차 |
 | [PROJECTS.md](PROJECTS.md) | 프로젝트 등록부 | 프로젝트 목록·메타데이터·상태 포인터 |
+| [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md) | 프로그램 통합 아키텍처 | Homepage↔독립 프로그램 경계(정책) |
 | [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
 
 ---
@@ -35,6 +36,7 @@
 2. **GLOBAL.md** — 무엇이 규칙인지
 3. **PLAYBOOK.md** — 어떻게 일하는지
 4. **PROJECTS.md** — 무엇을 운영 중인지
+5. (필요 시) **PROGRAM_INTEGRATION.md** — Homepage와 프로그램을 어떻게 연결하는지
 
 ---
 
