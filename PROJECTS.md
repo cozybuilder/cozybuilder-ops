@@ -10,33 +10,40 @@
 
 ## 등록 상태 범례
 
-- 🟢 **등록됨(active)** — Common Brain 관리 대상으로 확정.
-- 🔵 **후보(candidate)** — 로컬에 존재하나 정식 등록은 미확정. 확정 시 🟢로 승격.
-- ⚪ **보류(on-hold)** — 등록 대상에서 일시 제외.
+- 🟢 **active** — 운영/개발 중인 제품. 유지보수·확장 대상.
+- 🟡 **paused** — 일시 중단. 재개 가능한 상태.
+- 🔵 **candidate** — 로컬에 존재하나 정체/등록 미확정. 확인 후 분류.
+- 📋 **planned** — 개발 전(기획·문서 단계 또는 코드 없음).
+- 📦 **archived** — 종료/동결.
 
 ---
 
 ## 등록부
 
-> 아래 후보 목록은 작업 디렉터리(`C:\projects`)의 **실제 git 메타데이터**에서 수집한 사실이다.
-> 정식 등록(🟢)은 [PLAYBOOK.md P1](PLAYBOOK.md) 절차로 확정한다.
+> 아래 목록은 작업 디렉터리(`C:\projects`)의 **실제 git 메타데이터**와 코비 승인(2026-06-26)으로 확정한 사실이다.
+> 폴더명 kebab-case 통일과 STATUS.md 포인터 연결은 후속 작업으로 분리한다.
 
 | 프로젝트 | 상태 | 기본 브랜치 | 원격(origin) | STATUS 포인터 |
 |----------|------|-------------|--------------|----------------|
-| cozybuilder-ops | 🟢 등록됨 | `main` | (원격 미연결) | (본 저장소 — 운영 허브) |
-| ebookPublishingSystem | 🔵 후보 | `main` | github.com/cozybuilder/ebookPublishingSystem | (미작성) |
-| gratitude-note | 🔵 후보 | `master` | github.com/cozybuilder/gratitude-note | (미작성) |
-| cozybuilder-homepage | 🔵 후보 | `main` | github.com/cozybuilder/cozybuilder-homepage | (미작성) |
-| ClipMiner | 🔵 후보 | `master` | (원격 미연결) | (미작성) |
-| house_rental | 🔵 후보 | (git 미초기화) | (없음) | (미작성) |
-| movieminer | 🔵 후보 | (git 미초기화) | (없음) | (미작성) |
+| cozybuilder-ops | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-ops | (본 저장소 — 운영 허브) |
+| homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | (미작성) |
+| ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | (미작성) |
+| gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | (미작성) |
+| ClipMiner | 🟢 active | `master` | (원격 미연결) | (미작성) |
+| movieminer | 🔵 candidate | (git 미초기화) | (없음) | (미작성) |
+| house_rental | 📋 planned | (git 미초기화) | (없음) | (미작성) |
+| ShortsFactory | 📋 planned | (코드/폴더 없음) | (없음) | (미작성) |
 
 ---
 
 ## 운영 메모
 
-- 위 데이터의 출처는 채팅 기억이 아니라 디스크의 실제 `.git` 메타데이터다.
-- 후보의 정식 등록·STATUS 포인터 연결은 확인 후 갱신한다 (Document First).
+- 위 데이터의 출처는 채팅 기억이 아니라 디스크의 실제 `.git` 메타데이터 + 코비 승인이다.
+- **ClipMiner**(🟢)는 개발 공백이 있으나, 홈페이지 등록·웹서비스 편입 예정으로 장기 active로 간주한다.
+- **ClipMiner**는 원격 미연결 상태 — GitHub 원격 생성·연결은 후속 작업으로 분리.
+- **movieminer**(🔵)는 실제 앱 코드가 있으나 git 미초기화 — 정체 확정 후 분류한다.
+- **house_rental / ShortsFactory**(📋)는 개발 전 — 착수 시 active로 승격한다.
+- 폴더명 kebab-case 통일, STATUS.md 포인터 연결은 후속 작업으로 분리한다.
 - 등록부 행이 늘거나 메타데이터가 바뀔 때만 이 문서를 수정한다 ([GLOBAL.md §2 소유권](GLOBAL.md)).
 
 ---
