@@ -27,7 +27,7 @@
 |----------|------|-------------|--------------|----------------|
 | cozybuilder-ops | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-ops | (본 저장소 — 운영 허브) |
 | homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | docs/STATUS.md |
-| ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | (미작성) |
+| ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | STATUS.md |
 | gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | (미작성) |
 | ClipMiner | 🟢 active | `main` | github.com/cozybuilder/clipminer | docs/STATUS.md |
 | movieminer | 🔵 candidate | (git 미초기화) | (없음) | (미작성) |
