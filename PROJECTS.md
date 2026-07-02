@@ -26,7 +26,7 @@
 | 프로젝트 | 상태 | 기본 브랜치 | 원격(origin) | STATUS 포인터 |
 |----------|------|-------------|--------------|----------------|
 | cozybuilder-ops | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-ops | (본 저장소 — 운영 허브) |
-| homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | (미작성) |
+| homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | docs/STATUS.md |
 | ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | (미작성) |
 | gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | (미작성) |
 | ClipMiner | 🟢 active | `main` | github.com/cozybuilder/clipminer | docs/STATUS.md |
