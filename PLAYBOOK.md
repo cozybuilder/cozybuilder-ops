@@ -168,6 +168,40 @@ push
 - 저장 위치 판단: 철학·원칙·표준은 [GLOBAL.md](GLOBAL.md), 반복 절차는 본 문서. 중복 금지([GLOBAL.md §2](GLOBAL.md)).
 - 승격 요건: 최소 1회 실전 적용 또는 충분한 합의([GLOBAL.md §8.1](GLOBAL.md)).
 
+## P6. Documentation Sync Guard (문서 동기화 가드)
+
+> 목적: 프로젝트 구조·상태·기준정보 변경 시 **관련 문서 갱신 누락을 검출**한다.
+> 자동 수정하지 않는다. 철학은 [GLOBAL.md](GLOBAL.md)(Document First/SSOT) — 본 절은 **실행 절차**만 소유한다.
+
+### P6.1 범위와 한계
+
+- **검증한다**: ①루트 필수문서 존재 ②템플릿 필수문서 존재 ③레포 내부 마크다운 상대링크 무결성
+  ④PROJECTS.md STATUS 포인터 문법 ⑤PROJECTS.md 테이블 최소 구조.
+- **하지 않는다**: 자동 수정 / 타 레포·private STATUS 실존 검사 / 네트워크 호출.
+- **마크다운 링크 검사는 inline `[text](link)` 만 대상**이다. 이미지 `![alt]()`, reference-style
+  `[text][id]`, HTML `<a href>`, autolink `<https://…>`, 그리고 코드블록/인라인 코드 내부 표기는 1차 범위에서 제외한다.
+- **의미적 최신성(내용이 실제 최신인지)은 검증하지 못한다.** 통과 = 구조·링크·문법이 온전함을 뜻할 뿐.
+- 타 레포/private/URL 포인터는 실패가 아니라 **warning**.
+
+### P6.2 SSOT
+
+- 필수문서 목록·허용 센티넬·검사 옵션은 **`docs-guard.config.json` 이 단독 소유**한다.
+- 본 절은 목록을 복제하지 않는다 — 절차·실행·한계·config 위치만 둔다.
+
+### P6.3 실행
+
+- 로컬(1차 자기검증): `node scripts/verify-docs-guard.mjs` — Node 내장만, 의존성 없음.
+- CI(최종 백스톱): `.github/workflows/docs-guard.yml` 가 push/PR 시 setup-node 후 동일 스크립트 실행.
+- 판정: **error ≥ 1 → 실패(exit 1)**, warning만 있으면 통과(exit 0)하되 로그에 표시.
+
+### P6.4 클로 작업 규칙
+
+- 문서/구조/상태 변경 커밋 **전** 로컬 가드를 실행하고, 완료 보고 검증에 결과를 포함한다(P3.4 Self Validation 연계).
+
+### P6.5 항목·센티넬 추가 절차
+
+- 새 센티넬·검사 항목이 필요하면 먼저 본 절에 근거를 남긴 뒤 `docs-guard.config.json` 에 추가한다([GLOBAL.md §8](GLOBAL.md)).
+
 ---
 
 _Common Brain OS v1.0 · cozybuilder-ops_

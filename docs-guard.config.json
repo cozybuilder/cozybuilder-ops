@@ -1,0 +1,58 @@
+{
+  "_comment": "cozybuilder docs-guard config v1. 필수문서/센티넬/검사옵션의 SSOT. 목록은 여기서만 관리한다.",
+
+  "selfProjectName": "cozybuilder-ops",
+  "selfRepoName": "cozybuilder-ops",
+
+  "rootRequiredDocs": [
+    "README.md",
+    "GLOBAL.md",
+    "PLAYBOOK.md",
+    "PROJECTS.md",
+    "PROGRAM_INTEGRATION.md"
+  ],
+
+  "templateRequiredDocs": [
+    "templates/project-template/README.md",
+    "templates/project-template/STATUS.md"
+  ],
+
+  "markdownLinkCheckTargets": [
+    "README.md",
+    "GLOBAL.md",
+    "PLAYBOOK.md",
+    "PROJECTS.md",
+    "PROGRAM_INTEGRATION.md",
+    "templates/project-template/README.md",
+    "templates/project-template/STATUS.md"
+  ],
+  "markdownLinkIgnorePrefixes": ["http://", "https://", "#", "mailto:"],
+
+  "projectsTable": {
+    "file": "PROJECTS.md",
+    "requiredColumns": ["프로젝트", "상태", "STATUS 포인터"],
+    "statusPointerColumn": "STATUS 포인터"
+  },
+
+  "allowedStatusPointerSentinels": [
+    "(본 저장소 — 운영 허브)",
+    "(미작성)"
+  ],
+
+  "statusPointerRules": {
+    "repoRelative": {
+      "mustEndWith": "STATUS.md",
+      "denyLeadingSlash": true,
+      "denyBackslash": true,
+      "denyDotDot": true,
+      "existenceCheckWhenSelfProject": true
+    },
+    "url": {
+      "allow": true,
+      "recommended": false,
+      "requireScheme": ["http://", "https://"],
+      "network": false,
+      "onValid": "warn"
+    }
+  }
+}
