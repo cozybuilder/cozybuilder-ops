@@ -30,7 +30,7 @@
 | ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | STATUS.md |
 | gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | docs/STATUS.md |
 | ClipMiner | 🟢 active | `main` | github.com/cozybuilder/clipminer | docs/STATUS.md |
-| movieminer | 🔵 candidate | (git 미초기화) | (없음) | (미작성) |
+| movieminer | 🔵 candidate | `main` | (없음) | STATUS.md |
 | house_rental | 📋 planned | (git 미초기화) | (없음) | (미작성) |
 | ShortsFactory | 📋 planned | (코드/폴더 없음) | (없음) | (미작성) |
 | cozyrent | 🟢 active | `main` | github.com/cozybuilder/cozyrent (PRIVATE) | docs/STATUS.md |
@@ -42,7 +42,7 @@
 - 위 데이터의 출처는 채팅 기억이 아니라 디스크의 실제 `.git` 메타데이터 + 코비 승인이다.
 - **ClipMiner**(🟢)는 개발 공백이 있으나, 홈페이지 등록·웹서비스 편입 예정으로 장기 active로 간주한다.
 - **ClipMiner**: 2026-06-26 Common Brain 편입 완료(README/CLAUDE/docs/STATUS), GitHub(cozybuilder/clipminer) 초기 push 완료, 브랜치 main. 폴더명(ClipMiner→clipminer) 변경은 후속.
-- **movieminer**(🔵)는 실제 앱 코드가 있으나 git 미초기화 — 정체 확정 후 분류한다.
+- **movieminer**(🔵): 2026-07-03 최소 문서(README/STATUS) 구축·git init(`main`, 문서 우선 초기 커밋) 완료. remote 미연결(origin 없음) — push 보류. 상태 SSOT는 STATUS.md. 정체·active 전환은 미확정(코지 승인 전 미전환).
 - **house_rental / ShortsFactory**(📋)는 개발 전 — 착수 시 active로 승격한다.
 - **cozyrent**(🟢 active / 개발 중): 제품명 **코지임대**(다가구·상가주택 건물주용 임대관리 앱). Path `C:\projects\cozyrent`. GitHub `cozybuilder/cozyrent` **Visibility=PRIVATE 고정**(저장소 D-017, 공개 전환 금지·필요 시 별도 Lite/Open 신규). Platform=Android mobile app. 비즈니스 모델=첫 달 무료 + 구독 + 광고 가능. 진입 요약=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 2026-06-30 문서 초기 구축·remote 연결·main push 완료. 이후 **React+Vite+TS+Tailwind v4 앱 개발 진행 중** — 홈 상황판/호실 탭·상세/건물 탭(고정지출·시설·하자수선)/계약·입금·입주기록 구현. 저장 계층은 localStorage 추상화(후속 Capacitor SQLite 교체형).
 - **gratitude-note**: 2026-07-03 STATUS.md 포인터 연결 완료(docs/STATUS.md). README 진입문서화 완료.
