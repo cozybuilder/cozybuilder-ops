@@ -9,7 +9,9 @@
     "GLOBAL.md",
     "PLAYBOOK.md",
     "PROJECTS.md",
-    "PROGRAM_INTEGRATION.md"
+    "PROGRAM_INTEGRATION.md",
+    "DOC_APPROVALS.md",
+    "auto-docs.config.json"
   ],
 
   "templateRequiredDocs": [
@@ -23,6 +25,7 @@
     "PLAYBOOK.md",
     "PROJECTS.md",
     "PROGRAM_INTEGRATION.md",
+    "DOC_APPROVALS.md",
     "templates/project-template/README.md",
     "templates/project-template/STATUS.md"
   ],

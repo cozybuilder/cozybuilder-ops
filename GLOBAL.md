@@ -38,6 +38,7 @@
 | 기준 진화 철학 · 역할 | **GLOBAL.md §8** (이 문서) |
 | 기준 진화 절차 | **PLAYBOOK.md §P5** |
 | 프로그램 통합 아키텍처 (정책) | **PROGRAM_INTEGRATION.md** |
+| 자동 문서수정 승인 범위 · 승인/철회 이력 | **DOC_APPROVALS.md** |
 
 ---
 

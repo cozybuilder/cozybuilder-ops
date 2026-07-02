@@ -26,6 +26,8 @@
 | [PLAYBOOK.md](PLAYBOOK.md) | 운영 절차 · 반복 워크플로 | "어떻게 하는가" 절차 |
 | [PROJECTS.md](PROJECTS.md) | 프로젝트 등록부 | 프로젝트 목록·메타데이터·상태 포인터 |
 | [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md) | 프로그램 통합 아키텍처 | Homepage↔독립 프로그램 경계(정책) |
+| [DOC_APPROVALS.md](DOC_APPROVALS.md) | 자동수정 승인 이력 | 자동 문서수정 승인 범위·승인/철회 이력 |
+| [auto-docs.config.json](auto-docs.config.json) | 자동수정 설정 | 자동수정 블록·트리거 정의(capability) |
 | [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
 
 ---

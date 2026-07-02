@@ -202,6 +202,31 @@ push
 
 - 새 센티넬·검사 항목이 필요하면 먼저 본 절에 근거를 남긴 뒤 `docs-guard.config.json` 에 추가한다([GLOBAL.md §8](GLOBAL.md)).
 
+## P7. Auto Documentation Sync (기본 절차)
+
+> 목적: 승인된 범위 안에서 문서의 정해진 블록을 자동으로 최신화한다.
+> 본 절은 **기본 절차·원칙**만 정의한다. 실제 실행 런타임·마커 무결성 검사·프로그램 레포 워크플로는 2배치에서 구현한다.
+
+### P7.1 권한과 능력의 분리
+
+- **능력(무엇을/어떻게)**: `auto-docs.config.json` — 자동수정 가능한 블록·mode·트리거 정의.
+- **권한(누가/언제 승인)**: [DOC_APPROVALS.md](DOC_APPROVALS.md) — 승인 범위·승인/철회 이력(SSOT).
+- 소유권 지정은 [GLOBAL.md §2](GLOBAL.md). 두 파일은 `block_id` 로 연결되며 내용을 복제하지 않는다.
+
+### P7.2 fail-closed 원칙
+
+- 자동수정은 **AUTO-DOCS 마커 블록 내부**에서만 일어난다. 블록 밖 사람 본문은 무수정.
+  마커: `<!-- AUTO-DOCS:START:block_id -->` … `<!-- AUTO-DOCS:END:block_id -->`.
+- 해당 `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active` 일 때만 자동수정한다.
+  active 가 없으면(=proposed/revoked/superseded/누락) 자동수정하지 않고 **proposal-only** 로 둔다.
+- [GLOBAL.md](GLOBAL.md) 본문과 DOC_APPROVALS.md 자체는 자동수정 금지(사람만 수정).
+- 승인 범위 밖 변경은 다시 코지 승인을 받는다.
+
+### P7.3 배치 범위
+
+- 1배치(완료): DOC_APPROVALS.md / auto-docs.config.json 신설, GLOBAL §2 소유권, docs-guard 존재검사·링크대상 반영.
+- 2배치(보류): 실제 자동수정 실행 스크립트, 마커 무결성·`block_id`↔active 연결·중복/중첩 검사, 프로그램 레포 재사용 워크플로.
+
 ---
 
 _Common Brain OS v1.0 · cozybuilder-ops_
