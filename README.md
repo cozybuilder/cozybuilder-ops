@@ -30,6 +30,20 @@
 | [auto-docs.config.json](auto-docs.config.json) | 자동수정 설정 | 자동수정 블록·트리거 정의(capability) |
 | [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
 
+### 루트 문서 목록 (자동 생성)
+
+> 아래 목록은 `auto-docs`(block: ops-doc-map)가 `docs-guard.config.json`에서 생성한다. 수동 편집 금지.
+
+<!-- AUTO-DOCS:START:ops-doc-map -->
+- [README.md](README.md)
+- [GLOBAL.md](GLOBAL.md)
+- [PLAYBOOK.md](PLAYBOOK.md)
+- [PROJECTS.md](PROJECTS.md)
+- [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md)
+- [DOC_APPROVALS.md](DOC_APPROVALS.md)
+- [auto-docs.config.json](auto-docs.config.json)
+<!-- AUTO-DOCS:END:ops-doc-map -->
+
 ---
 
 ## 읽는 순서

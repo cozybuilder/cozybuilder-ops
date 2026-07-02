@@ -232,9 +232,11 @@ push
 
 - 안전검사: `node scripts/verify-docs-guard.mjs` (마커 무결성 + config↔승인 연결 포함).
 - 자동수정 dry-run: `node scripts/auto-docs.mjs --dry-run` — 실행 후보만 출력, **파일 쓰기·commit·push 없음**.
-- 판정 순서: (1) `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active` → (2) 대상 문서에
-  해당 AUTO-DOCS 마커 존재 → 둘 다 충족해야 "실행 후보". 하나라도 아니면 자동수정하지 않는다(fail-closed).
-- `--write` / `--apply` 는 v0 에서 거부된다. 실제 쓰기·bot 커밋은 별도 코지 승인 후 다음 단계에서 구현.
+- 실제 반영: `node scripts/auto-docs.mjs --apply` — **AUTO-DOCS 마커 내부만** 재생성(regenerate). 마커 밖·다른 파일은 손대지 않는다.
+- 판정 순서(모두 충족해야 실행): (1) `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active`
+  → (2) 대상 문서에 해당 AUTO-DOCS 마커가 정확히 1쌍 존재 → (3) 등록된 generator 존재.
+  하나라도 아니면 자동수정하지 않는다(fail-closed → proposal-only/보류). GLOBAL.md·DOC_APPROVALS.md 는 항상 제외.
+- **bot 자동 commit/push 는 아직 만들지 않는다.** `--apply` 는 파일만 수정하고, 커밋/푸시는 사람이 검토 후 수행한다.
 
 ### P7.5 승인 에스컬레이션
 
@@ -242,6 +244,19 @@ push
   마커를 새 문서에 추가, `auto-docs.config.json`·`DOC_APPROVALS.md`·가드 기준 변경.
 - 위험·중복·충돌 검토는 승인 "전"에 끝낸다. 코지 승인 "후"에는 재검토 없이 범위 그대로 반영한다([GLOBAL.md §8](GLOBAL.md)).
 - 승인 요청은 반드시 다음 표시를 사용한다: `🔴🔴🔴 [코지 승인 요청] 🔴🔴🔴`.
+
+### P7.6 자동화 명령어 색인 (자동 생성)
+
+> 아래는 `auto-docs`(block: playbook-automation-index)가 `scripts/`·`.github/workflows/`에서 생성한다. 수동 편집 금지.
+
+<!-- AUTO-DOCS:START:playbook-automation-index -->
+**scripts**
+- `scripts/auto-docs.mjs`
+- `scripts/verify-docs-guard.mjs`
+
+**workflows**
+- `.github/workflows/docs-guard.yml`
+<!-- AUTO-DOCS:END:playbook-automation-index -->
 
 ---
 
