@@ -33,7 +33,7 @@
 | movieminer | 🔵 candidate | (git 미초기화) | (없음) | (미작성) |
 | house_rental | 📋 planned | (git 미초기화) | (없음) | (미작성) |
 | ShortsFactory | 📋 planned | (코드/폴더 없음) | (없음) | (미작성) |
-| cozyrent | 📋 planned | `main` | github.com/cozybuilder/cozyrent (PRIVATE) | docs/STATUS.md |
+| cozyrent | 🟢 active | `main` | github.com/cozybuilder/cozyrent (PRIVATE) | docs/STATUS.md |
 
 ---
 
@@ -44,7 +44,7 @@
 - **ClipMiner**: 2026-06-26 Common Brain 편입 완료(README/CLAUDE/docs/STATUS), GitHub(cozybuilder/clipminer) 초기 push 완료, 브랜치 main. 폴더명(ClipMiner→clipminer) 변경은 후속.
 - **movieminer**(🔵)는 실제 앱 코드가 있으나 git 미초기화 — 정체 확정 후 분류한다.
 - **house_rental / ShortsFactory**(📋)는 개발 전 — 착수 시 active로 승격한다.
-- **cozyrent**(📋 planned / document-ready): 제품명 **코지임대**(건물주용 임대관리 앱). Path `C:\projects\cozyrent`. GitHub `cozybuilder/cozyrent` **Visibility=PRIVATE 고정**(저장소 D-017, 공개 전환 금지·필요 시 별도 Lite/Open 신규). Platform=Android mobile app. 비즈니스 모델=첫 달 무료 + 구독 + 광고 가능. Main doc=docs/AI_CONTEXT.md, Status doc=docs/STATUS.md. 2026-06-30 문서 초기 구축·remote 연결·main push 완료, 코드 미착수.
+- **cozyrent**(🟢 active / 개발 중): 제품명 **코지임대**(다가구·상가주택 건물주용 임대관리 앱). Path `C:\projects\cozyrent`. GitHub `cozybuilder/cozyrent` **Visibility=PRIVATE 고정**(저장소 D-017, 공개 전환 금지·필요 시 별도 Lite/Open 신규). Platform=Android mobile app. 비즈니스 모델=첫 달 무료 + 구독 + 광고 가능. 진입 요약=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 2026-06-30 문서 초기 구축·remote 연결·main push 완료. 이후 **React+Vite+TS+Tailwind v4 앱 개발 진행 중** — 홈 상황판/호실 탭·상세/건물 탭(고정지출·시설·하자수선)/계약·입금·입주기록 구현. 저장 계층은 localStorage 추상화(후속 Capacitor SQLite 교체형).
 - 폴더명 kebab-case 통일, STATUS.md 포인터 연결은 후속 작업으로 분리한다.
 - 등록부 행이 늘거나 메타데이터가 바뀔 때만 이 문서를 수정한다 ([GLOBAL.md §2 소유권](GLOBAL.md)).
 
