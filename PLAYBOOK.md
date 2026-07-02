@@ -258,6 +258,19 @@ push
 - `.github/workflows/docs-guard.yml`
 <!-- AUTO-DOCS:END:playbook-automation-index -->
 
+## P8. 산출물 검수 기준 (Artifact Verification Criteria)
+
+> 검수는 GitHub web/raw 화면 인상이 아니라 **git 산출물**을 기준으로 한다.
+
+- 이모지·코드블록 fence·특수문자처럼 **뷰어/캐시/렌더링 차이**가 생길 수 있는 항목은
+  web/raw 조회만으로 실패 판정하지 않는다.
+- 클로가 로컬 git 근거를 제시하면 우선 인정한다: `git show origin/main:<파일>`, `git grep`,
+  필요 시 UTF-8 코드포인트/바이트 확인.
+- 코비 검수는 **산출물 중심**으로 한다: 커밋 확인 / 변경 파일 / 승인 범위 / docs-guard 결과 /
+  auto-docs 결과 / 위험 문서 침범 여부.
+- 이모지·특수문자 **표시 차이만으로 반복 커밋·재보고를 만들지 않는다.**
+- 단, **실제 내용 충돌이나 승인 범위 위반**이 있으면 기존대로 실패 처리한다.
+
 ---
 
 _Common Brain OS v1.0 · cozybuilder-ops_
