@@ -30,6 +30,8 @@
 - 개별 프로젝트의 살아있는 상태는 그 프로젝트의 `STATUS.md`에 기록한다.
 - 갱신 시 무엇이/언제/왜 바뀌었는지 한 줄이라도 남긴다.
 - 등록부 수준 메타데이터(이름·저장소·포인터)가 바뀐 경우에만 [PROJECTS.md](PROJECTS.md)를 함께 갱신한다.
+- **수동 갱신이 기본이자 필수다.** 클로가 작업 후 그 프로젝트 STATUS.md를 직접 갱신한다. 자동화는 이를 대체하지 않는다(→ P7 보조 기능).
+- **코드 변경이 있으면 그 프로젝트 STATUS.md를 갱신하지 않고 commit/push 하지 않는다.** (STATUS 갱신이 불필요한 변경이면 그 사유를 완료 보고에 명시 → P3.4)
 
 ## P3. 표준 통신 형식 (Standard Communication Format)
 
@@ -120,6 +122,8 @@
 6. **코드블록 밖 평문 출력을 금지**한다. 보고 본문 설명은 전부 코드블록 안에 둔다.
 7. **질문·승인 요청도 반드시 동일 코드블록 안에 포함**한다. 블록 밖에 별도 질문을 두지 않는다.
 8. 이 Output Contract 는 **완료 보고뿐 아니라 분석·진행 보고에도 동일하게 적용**한다.
+9. **완료 보고에는 STATUS.md 갱신 여부를 반드시 포함한다.** 예: `STATUS.md 반영 완료` 또는
+   `STATUS.md 갱신 불필요 — <사유>`. 코드 변경이 있는 작업은 P2에 따라 STATUS 갱신 없이 마무리할 수 없다.
 
 ### P3.4.6 Self Validation
 
@@ -212,6 +216,8 @@ push
 - **능력(무엇을/어떻게)**: `auto-docs.config.json` — 자동수정 가능한 블록·mode·트리거 정의.
 - **권한(누가/언제 승인)**: [DOC_APPROVALS.md](DOC_APPROVALS.md) — 승인 범위·승인/철회 이력(SSOT).
 - 소유권 지정은 [GLOBAL.md §2](GLOBAL.md). 두 파일은 `block_id` 로 연결되며 내용을 복제하지 않는다.
+- **STATUS 자동화는 보조 기능이다.** auto-docs의 status-recent-changes/status-verification 블록은
+  수동 STATUS 갱신(→ P2, 기본이자 필수)을 **대체하지 않고** 초안 생성·누락 감지용으로만 쓴다.
 
 ### P7.2 fail-closed 원칙
 
