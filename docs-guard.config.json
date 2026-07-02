@@ -57,5 +57,21 @@
       "network": false,
       "onValid": "warn"
     }
+  },
+
+  "autoDocs": {
+    "configFile": "auto-docs.config.json",
+    "approvalsFile": "DOC_APPROVALS.md",
+    "approvalsTable": {
+      "requiredColumns": ["approval_id", "status", "block_id"],
+      "blockIdColumn": "block_id",
+      "statusColumn": "status"
+    },
+    "markerScanTargets": [
+      "README.md",
+      "PROJECTS.md",
+      "PROGRAM_INTEGRATION.md",
+      "PLAYBOOK.md"
+    ]
   }
 }

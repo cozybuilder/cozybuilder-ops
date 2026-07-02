@@ -225,7 +225,23 @@ push
 ### P7.3 배치 범위
 
 - 1배치(완료): DOC_APPROVALS.md / auto-docs.config.json 신설, GLOBAL §2 소유권, docs-guard 존재검사·링크대상 반영.
-- 2배치(보류): 실제 자동수정 실행 스크립트, 마커 무결성·`block_id`↔active 연결·중복/중첩 검사, 프로그램 레포 재사용 워크플로.
+- 2배치(진행): 자동수정 실행 스크립트(dry-run), 마커 무결성·`block_id`↔active 연결·중복/중첩 검사.
+- 미구현(별도 승인): bot 자동 commit/push, 프로그램 레포 워크플로 배포, 실제 파일 쓰기(--write).
+
+### P7.4 실행 방식 (v0 dry-run)
+
+- 안전검사: `node scripts/verify-docs-guard.mjs` (마커 무결성 + config↔승인 연결 포함).
+- 자동수정 dry-run: `node scripts/auto-docs.mjs --dry-run` — 실행 후보만 출력, **파일 쓰기·commit·push 없음**.
+- 판정 순서: (1) `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active` → (2) 대상 문서에
+  해당 AUTO-DOCS 마커 존재 → 둘 다 충족해야 "실행 후보". 하나라도 아니면 자동수정하지 않는다(fail-closed).
+- `--write` / `--apply` 는 v0 에서 거부된다. 실제 쓰기·bot 커밋은 별도 코지 승인 후 다음 단계에서 구현.
+
+### P7.5 승인 에스컬레이션
+
+- 아래는 진행 전 반드시 코지 승인을 받는다: 실제 파일 자동수정(쓰기), bot commit/push, 승인 범위 밖 블록/문서,
+  마커를 새 문서에 추가, `auto-docs.config.json`·`DOC_APPROVALS.md`·가드 기준 변경.
+- 위험·중복·충돌 검토는 승인 "전"에 끝낸다. 코지 승인 "후"에는 재검토 없이 범위 그대로 반영한다([GLOBAL.md §8](GLOBAL.md)).
+- 승인 요청은 반드시 다음 표시를 사용한다: `🔴🔴🔴 [코지 승인 요청] 🔴🔴🔴`.
 
 ---
 

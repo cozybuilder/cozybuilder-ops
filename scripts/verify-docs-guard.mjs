@@ -144,6 +144,85 @@ if (!existsSync(projFileAbs)) {
   }
 }
 
+// 6. auto-docs ↔ DOC_APPROVALS 일관성 + AUTO-DOCS 마커 무결성
+const ad = cfg.autoDocs;
+if (ad) {
+  // 6a. auto-docs.config.json 로드
+  let adcfg = null;
+  const adcfgAbs = resolve(repoRoot, ad.configFile ?? "auto-docs.config.json");
+  if (!existsSync(adcfgAbs)) err("auto-docs", `${ad.configFile} 없음`);
+  else { try { adcfg = JSON.parse(readFileSync(adcfgAbs, "utf8")); } catch (e) { err("auto-docs", `${ad.configFile} 파싱 실패: ${e.message}`); } }
+
+  // 6b. DOC_APPROVALS Registry 로드 (block_id -> status)
+  const apprMap = new Map();
+  const apprAbs = resolve(repoRoot, ad.approvalsFile ?? "DOC_APPROVALS.md");
+  const at = ad.approvalsTable ?? {};
+  const atCols = at.requiredColumns ?? ["approval_id", "status", "block_id"];
+  if (!existsSync(apprAbs)) err("auto-docs", `${ad.approvalsFile} 없음`);
+  else {
+    const lines = readLines(apprAbs);
+    let header = null;
+    for (const line of lines) {
+      if (!line.trim().startsWith("|")) { if (header) break; else continue; }
+      const cells = splitRow(line);
+      if (isSep(cells)) continue;
+      if (!header) { if (atCols.every((c) => cells.includes(c))) header = cells; continue; }
+      const bi = header.indexOf(at.blockIdColumn ?? "block_id");
+      const si = header.indexOf(at.statusColumn ?? "status");
+      if (bi >= 0 && si >= 0 && cells.length === header.length) apprMap.set(cells[bi], cells[si]);
+    }
+    if (!header) err("auto-docs", `${ad.approvalsFile}: Registry 표(${atCols.join(", ")}) 찾지 못함`);
+  }
+
+  // 6c. config block_id ↔ 승인 연결
+  if (adcfg) {
+    for (const b of adcfg.blocks ?? []) {
+      if (!apprMap.has(b.block_id)) err("auto-docs", `config block_id "${b.block_id}" 가 승인장부에 없음`);
+      else if (apprMap.get(b.block_id) !== "active") warn("auto-docs", `block "${b.block_id}" status=${apprMap.get(b.block_id)} (proposal-only)`);
+    }
+    const cfgIds = new Set((adcfg.blocks ?? []).map((b) => b.block_id));
+    for (const [bid, st] of apprMap) {
+      if (st === "active" && !cfgIds.has(bid)) warn("auto-docs", `active 승인 "${bid}" 에 대응하는 capability 정의 없음`);
+    }
+    // 6d. AUTO-DOCS 마커 무결성
+    for (const target of ad.markerScanTargets ?? []) {
+      const fileAbs = resolve(repoRoot, target);
+      if (existsSync(fileAbs)) checkMarkers(target, fileAbs, cfgIds);
+    }
+  }
+}
+
+function checkMarkers(target, fileAbs, cfgIds) {
+  const mRe = /<!--\s*AUTO-DOCS:(START|END):([A-Za-z0-9_-]+)\s*-->/g;
+  const stack = [];
+  const closed = new Set();
+  let inFence = false;
+  readLines(fileAbs).forEach((line, i) => {
+    if (/^\s*(```|~~~)/.test(line)) { inFence = !inFence; return; }
+    if (inFence) return;
+    const scrubbed = line.replace(/`[^`]*`/g, ""); // 인라인 코드 예시 제외
+    mRe.lastIndex = 0;
+    let m;
+    while ((m = mRe.exec(scrubbed)) !== null) {
+      const kind = m[1], id = m[2];
+      if (kind === "START") {
+        if (stack.length) err("auto-marker", `${target}:${i + 1} 중첩 마커: START:${id} (열림 ${stack[stack.length - 1]})`);
+        if (closed.has(id) || stack.includes(id)) err("auto-marker", `${target}:${i + 1} block_id 중복: ${id}`);
+        if (cfgIds.size && !cfgIds.has(id)) err("auto-marker", `${target}:${i + 1} 미정의 block_id: ${id}`);
+        stack.push(id);
+      } else {
+        if (!stack.length) { err("auto-marker", `${target}:${i + 1} 짝 없는 END:${id}`); }
+        else {
+          const top = stack.pop();
+          if (top !== id) err("auto-marker", `${target}:${i + 1} 마커 불일치: END:${id} (열림 ${top})`);
+          else closed.add(id);
+        }
+      }
+    }
+  });
+  if (stack.length) err("auto-marker", `${target}: 닫히지 않은 마커: ${stack.join(", ")}`);
+}
+
 // 출력
 if (errors.length) { console.log("── ERRORS ──"); errors.forEach((e) => console.log(e)); }
 if (warnings.length) { console.log("── WARNINGS ──"); warnings.forEach((w) => console.log(w)); }
