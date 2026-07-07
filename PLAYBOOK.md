@@ -300,6 +300,27 @@ push
 - **정보 반영**: 클로 작업 중 코지·코비가 나눈 정보(새 요구사항·발견된 문제·제품 방향·테스트 결과·주의사항·금지사항·다음 우선순위)는 **다음 작업지시서에 반영**한다.
 - **오해 방지**: "코비가 지시서를 아예 안 만든다"는 뜻이 아니다 — 코비는 **코지 승인 후** 다음 지시서를 만든다.
 
+## P10. AI Video Production 작업 절차
+
+> AI Video Production 작업 진입 **라우팅**. SSOT 원본은 `ai-video-production` 저장소에만 있으며,
+> 여기(ops)에는 내용을 **복제하지 않고 진입 경로만** 둔다.
+
+### P10.1 진입 순서 (반드시)
+
+1. cozybuilder-ops: [GLOBAL.md](GLOBAL.md) → [PLAYBOOK.md](PLAYBOOK.md) → [PROJECTS.md](PROJECTS.md)
+2. `ai-video-production` 저장소 진입
+3. 아래 문서를 **순서대로** 확인:
+   1. `docs/templates/production_brief_v1.md` — 프로젝트 입력 SSOT
+   2. `docs/operations/operating_philosophy.md`
+   3. `docs/operations/operating_rules.md`
+   4. `docs/operations/status.md`
+   5. 현재 프로젝트 문서
+
+### P10.2 규칙
+
+- **Production Brief를 확인하지 않고 영상 기획·시나리오·Scene Brief 작성 금지.**
+- Production Brief 원본 SSOT는 `ai-video-production`이 소유한다. ops는 진입 경로만 두고 **내용을 복제하지 않는다**([GLOBAL.md §2](GLOBAL.md)).
+
 ---
 
 _Common Brain OS v1.0 · cozybuilder-ops_
