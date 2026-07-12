@@ -27,6 +27,7 @@
 | [PROJECTS.md](PROJECTS.md) | 프로젝트 등록부 | 프로젝트 목록·메타데이터·상태 포인터 |
 | [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md) | 프로그램 통합 아키텍처 | Homepage↔독립 프로그램 경계(정책) |
 | [DOC_APPROVALS.md](DOC_APPROVALS.md) | 자동수정 승인 이력 | 자동 문서수정 승인 범위·승인/철회 이력 |
+| [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md) | Gemini 운영 참고 | CozyBuilder 내 Gemini 역할·검증 기준·현재 계정 기준 |
 | [auto-docs.config.json](auto-docs.config.json) | 자동수정 설정 | 자동수정 블록·트리거 정의(capability) |
 | [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
 
@@ -53,6 +54,7 @@
 3. **PLAYBOOK.md** — 어떻게 일하는지
 4. **PROJECTS.md** — 무엇을 운영 중인지
 5. (필요 시) **PROGRAM_INTEGRATION.md** — Homepage와 프로그램을 어떻게 연결하는지
+6. (Gemini 사용 시) **GEMINI_USAGE_GUIDE.md** — 역할·검증·실전 테스트 기준
 
 ---
 
@@ -61,6 +63,7 @@
 - 새 프로젝트 추가 → [PLAYBOOK.md](PLAYBOOK.md)의 "신규 프로젝트 등록" 절차를 따른다.
 - 규칙을 바꾸고 싶다 → [GLOBAL.md](GLOBAL.md)를 수정하고 커밋한다. (Document First)
 - 프로젝트 상태가 궁금하다 → [PROJECTS.md](PROJECTS.md)에서 해당 프로젝트의 STATUS 포인터를 따라간다.
+- Gemini를 사용할 때 → [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md)의 역할·검증 순서를 따른다.
 
 ---
 
