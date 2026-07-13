@@ -65,6 +65,8 @@
 - [cases/011.md](cases/011.md): 89~98번 반려동물·수면·습관·옷장·집 관리 서비스 사례·가격
 - [OPPORTUNITIES.md](OPPORTUNITIES.md): 사례에서 파생된 사업·서비스 아이디어
 - [PRIORITY_ROADMAP.md](PRIORITY_ROADMAP.md): 검증 및 개발 우선순위
+- [FAST_MVP_SHORTLIST.md](FAST_MVP_SHORTLIST.md): AI 핵심형 1~7일 MVP 후보 재분류
+- [FIELD_VOICE_AI_VALIDATION.md](FIELD_VOICE_AI_VALIDATION.md): 건축·인테리어 현장 음성 AI 제품 가설과 검증 계획
 
 ## 핵심 아이디어 주제
 
