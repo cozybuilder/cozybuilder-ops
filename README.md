@@ -28,6 +28,7 @@
 | [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md) | 프로그램 통합 아키텍처 | Homepage↔독립 프로그램 경계(정책) |
 | [DOC_APPROVALS.md](DOC_APPROVALS.md) | 자동수정 승인 이력 | 자동 문서수정 승인 범위·승인/철회 이력 |
 | [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md) | Gemini 운영 참고 | CozyBuilder 내 Gemini 역할·검증 기준·현재 계정 기준 |
+| [docs/business-research/](docs/business-research/) | 1인기업 비즈니스 리서치 | 수익 구조 분석·파생 아이디어·검증 및 개발 우선순위 |
 | [auto-docs.config.json](auto-docs.config.json) | 자동수정 설정 | 자동수정 블록·트리거 정의(capability) |
 | [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
 
@@ -55,6 +56,7 @@
 4. **PROJECTS.md** — 무엇을 운영 중인지
 5. (필요 시) **PROGRAM_INTEGRATION.md** — Homepage와 프로그램을 어떻게 연결하는지
 6. (Gemini 사용 시) **GEMINI_USAGE_GUIDE.md** — 역할·검증·실전 테스트 기준
+7. (신규 사업 조사 시) **docs/business-research/** — 1인기업 수익 구조·아이디어·우선순위 관리
 
 ---
 
@@ -64,6 +66,7 @@
 - 규칙을 바꾸고 싶다 → [GLOBAL.md](GLOBAL.md)를 수정하고 커밋한다. (Document First)
 - 프로젝트 상태가 궁금하다 → [PROJECTS.md](PROJECTS.md)에서 해당 프로젝트의 STATUS 포인터를 따라간다.
 - Gemini를 사용할 때 → [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md)의 역할·검증 순서를 따른다.
+- 1인기업·SaaS 수익 구조를 조사할 때 → [docs/business-research/README.md](docs/business-research/README.md)에서 시작한다.
 
 ---
 
