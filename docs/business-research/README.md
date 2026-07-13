@@ -67,6 +67,8 @@
 - [PRIORITY_ROADMAP.md](PRIORITY_ROADMAP.md): 검증 및 개발 우선순위
 - [FAST_MVP_SHORTLIST.md](FAST_MVP_SHORTLIST.md): AI 핵심형 1~7일 MVP 후보 재분류
 - [FIELD_VOICE_AI_VALIDATION.md](FIELD_VOICE_AI_VALIDATION.md): 건축·인테리어 현장 음성 AI 제품 가설과 검증 계획
+- [FIELD_VOICE_AI_LAUNCH_PLAN.md](FIELD_VOICE_AI_LAUNCH_PLAN.md): 14일 무료체험부터 결제·배포까지의 출시 계획
+- [FIELD_VOICE_AI_AI_COLLABORATION.md](FIELD_VOICE_AI_AI_COLLABORATION.md): 코비·클로·제미나이 역할 및 공개 영상 테스트 데이터 운영 기준
 
 ## 핵심 아이디어 주제
 
