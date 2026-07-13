@@ -66,7 +66,7 @@
 - [OPPORTUNITIES.md](OPPORTUNITIES.md): 사례에서 파생된 사업·서비스 아이디어
 - [PRIORITY_ROADMAP.md](PRIORITY_ROADMAP.md): 검증 및 개발 우선순위
 - [FAST_MVP_SHORTLIST.md](FAST_MVP_SHORTLIST.md): AI 핵심형 1~7일 MVP 후보 재분류
-- [FIELD_VOICE_AI_VALIDATION.md](FIELD_VOICE_AI_VALIDATION.md): 건축·인테리어 현장 음성 AI 제품 가설과 검증 계획
+- 건축·인테리어 현장 음성 AI (**말해짠AI**): 아이디어 검토를 마치고 정식 프로젝트 `fieldnote-ai`로 승격되었다. 상세 SSOT는 [cozybuilder/fieldnote-ai](https://github.com/cozybuilder/fieldnote-ai) 저장소가 소유한다. (이 폴더의 [FIELD_VOICE_AI_VALIDATION.md](FIELD_VOICE_AI_VALIDATION.md)에는 승격 안내만 남아 있다.)
 
 ## 핵심 아이디어 주제
 

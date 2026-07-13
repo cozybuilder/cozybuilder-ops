@@ -39,7 +39,8 @@
 
 | 순위 | 아이디어 | 상태 | 등급 | 총점 | 다음 검증 | 근거 문서 | 최근 검토일 |
 |---:|---|---|---|---:|---|---|---|
-| - | 아직 등록된 아이디어 없음 | 수집 전 | - | - | 첫 비즈니스 사례 분석 | [BUSINESS_CASES.md](BUSINESS_CASES.md) | 2026-07-13 |
+| - | 건축·인테리어 현장 음성 AI (**말해짠AI**) | 프로젝트 승격 → `fieldnote-ai` | - | - | VITO·클로바 STT 기술 스파이크 | [fieldnote-ai 저장소](https://github.com/cozybuilder/fieldnote-ai) | 2026-07-14 |
+| - | (그 외 아이디어) 아직 등록 없음 | 수집 전 | - | - | 첫 비즈니스 사례 분석 | [BUSINESS_CASES.md](BUSINESS_CASES.md) | 2026-07-13 |
 
 ## 상세 평가 템플릿
 
