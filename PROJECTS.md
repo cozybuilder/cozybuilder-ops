@@ -36,6 +36,7 @@
 | cozyrent | 🟢 active | `main` | github.com/cozybuilder/cozyrent (PRIVATE) | docs/STATUS.md |
 | fieldnote-ai | 🟢 active | `main` | github.com/cozybuilder/fieldnote-ai (PRIVATE) | docs/STATUS.md |
 | lifetimestudio | 🟢 active | `main` | github.com/cozybuilder/lifetimestudio | docs/STATUS.md |
+| ai-promotion | 🟢 active | `main` | github.com/cozybuilder/ai-promotion (PRIVATE) | docs/STATUS.md |
 
 ---
 
@@ -50,6 +51,7 @@
 - **gratitude-note**: 2026-07-03 STATUS.md 포인터 연결 완료(docs/STATUS.md). README 진입문서화 완료.
 - **fieldnote-ai**(🟢 active / 개발 착수 전): 제품명 **말해짠AI**(별칭 말해짜나). 건축·인테리어 현장 회의·상담·협의 음성을 현장용어 반영 전사문·회의록·금액·일정·변경사항·확인 메시지로 변환하는 AI 현장기록 SaaS. GitHub `cozybuilder/fieldnote-ai` **Visibility=PRIVATE**. 2026-07-14 `docs/business-research/`에서 발굴·검증(검증·출시·기술 조사 완료) 후 정식 프로젝트로 승격, 상세 문서 SSOT를 프로젝트 저장소로 이전. 진입 문서=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 VITO·클로바 STT 기술 스파이크(공급자 실측 확정). business-research의 옛 상세 문서는 승격 안내 스텁만 남김(이중 SSOT 금지).
 - **lifetimestudio**(🟢 active / 개발 착수 전): 제품명 **평생사진관**. 사용자의 사진과 결과 선택 이력을 바탕으로 사실 보존·Best Me·Dream Me 사진상품을 생성하고, 사용자가 선호하는 자신의 모습을 점진적으로 반영하는 개인화 AI 사진관. GitHub `cozybuilder/lifetimestudio`. 플랫폼 방향=**데스크탑 웹프로그램 우선 개발 → 웹 검증 후 바로 모바일 앱 제작**. PWA는 필수 중간 단계에서 제외. 초기 MVP는 단일 인물 프로필·Best Me·Dream Me 중심이며 커플·가족은 후속 확장. 진입 문서=docs/AI_CONTEXT.md, 제품 기획=docs/PLAN.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 이미지 생성·편집·개인화 API 기술 스파이크.
+- **ai-promotion**(🟢 active / 개발 착수 전): 제품명 **AI Promotion**. 한국어 사용자를 위해 AI 서비스의 무료 플랜·무료 체험·크레딧·할인·추천 혜택과 공식 가입 경로를 역할·카테고리별로 구조화하는 웹 디렉터리. GitHub `cozybuilder/ai-promotion` **Visibility=PRIVATE**. 2026-07-15 보류 후보에서 사용자 승인으로 정식 프로젝트 승격. 긴 사전 검증 없이 정적 데이터 기반 MVP를 빠르게 개발·배포하고 실제 유입·클릭·제휴 전환으로 판단한다. 진입 문서=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 웹 초기화, 샘플 데이터, 홈·목록·상세·검색·필터 구현.
 - 폴더명 kebab-case 통일은 후속 작업으로 분리한다.
 - 등록부 행이 늘거나 메타데이터가 바뀔 때만 이 문서를 수정한다 ([GLOBAL.md §2 소유권](GLOBAL.md)).
 
