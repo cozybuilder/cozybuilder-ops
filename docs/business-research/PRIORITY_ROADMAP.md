@@ -39,7 +39,8 @@
 
 | 순위 | 아이디어 | 상태 | 등급 | 총점 | 다음 검증 | 근거 문서 | 최근 검토일 |
 |---:|---|---|---|---:|---|---|---|
-| - | 건축·인테리어 현장 음성 AI (**말해짠AI**) | 프로젝트 승격 → `fieldnote-ai` | - | - | VITO·클로바 STT 기술 스파이크 | [fieldnote-ai 저장소](https://github.com/cozybuilder/fieldnote-ai) | 2026-07-14 |
+| - | 건축·인테리어 현장 음성 AI (**말해짠AI**) | 아이디어 보관·개발 보류 | P3 | - | 기존 음성 서비스 비교에서 현장업무 공백·지불 의사·독립 제품 필요성 확인 | [fieldnote-ai STATUS](https://github.com/cozybuilder/fieldnote-ai/blob/main/docs/STATUS.md) | 2026-07-14 |
+| - | **AI Promotions** | 아이디어 후보 보류·저장소 미생성 | P3 | - | 사용자 실질 혜택 공급량·무료 제휴 승인·한국 유입 및 전환 가능성 확인 | [OPPORTUNITIES.md](OPPORTUNITIES.md#ai-promotions) | 2026-07-15 |
 | - | (그 외 아이디어) 아직 등록 없음 | 수집 전 | - | - | 첫 비즈니스 사례 분석 | [BUSINESS_CASES.md](BUSINESS_CASES.md) | 2026-07-13 |
 
 ## 상세 평가 템플릿
