@@ -339,4 +339,18 @@ push
 
 ---
 
+## P12. 개발환경 확인 규칙 (재질문 방지)
+
+> 환경 정보의 SSOT = [docs/operations/DEVELOPMENT_ENVIRONMENT.md](docs/operations/DEVELOPMENT_ENVIRONMENT.md).
+
+1. 개발환경(장비·경로·도구·콘솔·도메인·빌드/서명) 관련 질문 전에 **DEVELOPMENT_ENVIRONMENT.md를 먼저 확인**한다.
+2. 문서에 **확인된 값이 있으면 코지에게 다시 묻지 않는다.**
+3. 값이 바뀌었을 가능성이 있으면 **먼저 로컬·콘솔·저장소에서 자체 확인**한다(명령 실측·API·git).
+4. 자체 확인이 불가능하고 **작업에 반드시 필요한 경우에만** 코지에게 묻는다.
+5. 코지에게 확인받은 새 정보는 **해당 작업 종료 전에 SSOT에 반영**한다.
+6. **대화 기억보다 환경 SSOT를 우선**한다([GLOBAL.md §7.1](GLOBAL.md)).
+7. secret은 SSOT에 기록하지 않는다 — **보관 위치·갱신일·담당만** 기록한다.
+
+---
+
 _Common Brain OS v1.0 · cozybuilder-ops_

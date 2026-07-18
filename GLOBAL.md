@@ -68,6 +68,7 @@ AI 구독료, API 비용, 서버 비용, DB·스토리지 비용, 도메인·호
 | 기준 진화 절차 | **PLAYBOOK.md §P5** |
 | 프로그램 통합 아키텍처 (정책) | **PROGRAM_INTEGRATION.md** |
 | 자동 문서수정 승인 범위 · 승인/철회 이력 | **DOC_APPROVALS.md** |
+| 개발환경 (장비·설치 도구·계정/콘솔·도메인/DNS·빌드/서명) | **docs/operations/DEVELOPMENT_ENVIRONMENT.md** (재질문 방지 절차는 PLAYBOOK §P12) |
 
 ---
 
