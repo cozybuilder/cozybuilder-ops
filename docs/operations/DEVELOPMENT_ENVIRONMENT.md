@@ -153,8 +153,8 @@ Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 
 | **cozyrent-dev** | yywhbiljpcxetpstvtea | **Seoul** ap-northeast-2 | CozyRent 인증·결제 원장·백엔드(링크됨) |
 | Cozybuilder-homepage | zniktvkdqaxqmgwmogyb | Tokyo ap-northeast-1 | 홈페이지용 |
 
-- cozyrent-dev [실측]: Auth **Google provider 활성**(id_token 검증 동작) · Email 활성 · **SMTP=Resend**(도메인 미인증 상태라
-  소유자 이메일로만 발송 — 200/500 실측 대조) · Edge Functions 배포(verify-purchase·rtdn-webhook·entitlement-issue·
+- cozyrent-dev [실측]: Auth **Google provider 활성**(id_token 검증 동작) · Email 활성 · **SMTP=Resend 정상**(발신자
+  no-reply@mail.cozybuilder.co.kr · 외부 수신자 200 — §4.5) · Edge Functions 배포(verify-purchase·rtdn-webhook·entitlement-issue·
   reconcile-subscriptions·point-defer 등) · migrations 4종(billing 원장·예약·reconcile·trial_carry) · **pg_cron**(reconcile 매시) ·
   **Vault 사용**(reconcile_cron_secret). 상세는 cozyrent docs(AUTH_CONSOLE_SETUP·SUBSCRIPTION·BILLING_PLAN) 소유.
 - **prod 프로젝트 미생성** — [실측: projects list에 없음]. 출시 전 별도 승인으로 생성.
@@ -162,12 +162,13 @@ Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 
 
 ### 4.5 Resend (이메일 발송)
 
-- 용도: Supabase 이메일 OTP — [실측: 소유자 주소 발송 성공].
-- 등록 도메인: **mail.cozybuilder.kr** · 리전 Tokyo — [콘솔 2026-07-18 코지 보고].
-- 상태: **도메인 인증 전** → 무료 플랜 제한으로 **계정 소유자 이메일로만 발송 가능**(외부 수신자 500) — [실측 대조].
-- 필요한 DNS 레코드 종류: SPF·DKIM(Resend 대시보드가 제시 — 구체 값 [미확인]). DNS 변경은 코지 승인·수행.
-- API key: Supabase SMTP 설정에만 저장(보관 위치만 기록 — 원문 금지).
-- ⚠ 정합 주의: Resend 도메인은 `.kr`(mail.cozybuilder.**kr**), Cloudflare zone은 `.co.kr`(§4.6) — **별개 등록인지 표기 차이인지 [미확인]**.
+- 용도: Supabase 이메일 OTP — [실측 2026-07-18: 외부 수신자 발송 200].
+- 등록 도메인: **mail.cozybuilder.co.kr** · Provider Cloudflare · 리전 Tokyo · **Verified(DKIM/SPF/MX 전부)** —
+  [콘솔 2026-07-18 코지 확인]. (최초 보고의 `mail.cozybuilder.kr` 표기는 **오기**였음 — `.co.kr`가 맞음 · §9 #9 해소.)
+- 발신자: Supabase SMTP sender = **no-reply@mail.cozybuilder.co.kr** · Sender name **코지임대** — [실측 2026-07-18: 수신 메일 From 확인].
+- 상태: 외부 수신자 발송 정상(종전 소유자-전용 제한은 기본 발신자 `onboarding@resend.dev` 때문 — 도메인 인증+발신자 전환으로 해소).
+- 무료 플랜 제한: 월 3,000통·일 100통(Resend Free 공표 기준 — 초과 필요 시 유료 검토).
+- API key: Supabase SMTP 설정(password 필드)에만 저장(보관 위치만 기록 — 원문 금지).
 
 ### 4.6 Cloudflare / 도메인 — [콘솔 2026-07-18 코지 확인]
 
@@ -250,7 +251,7 @@ keystore 비밀번호/파일 · private key · 복구 코드 · 주민번호/사
 | 6 | lifetimestudio: 등록부 🟢 active ↔ 로컬 clone 없음 | 불일치(clone 필요 여부) |
 | 7 | clipminer-web · ai-video-production: 로컬+원격 존재 ↔ 등록부에 없음 | 등록부 반영 여부 판단 필요 |
 | 8 | Play Console 개발자 계정명 · 라이선스 테스터 등록 상태 | 미확인 |
-| 9 | Resend `mail.cozybuilder.kr` ↔ Cloudflare `cozybuilder.co.kr` TLD 차이 | 별개 등록인지 표기 차이인지 미확인 |
+| 9 | ~~Resend 도메인 TLD 차이~~ | **해소(2026-07-18)** — 실도메인 `mail.cozybuilder.co.kr`(Cloudflare 관리 · Verified). `.kr` 표기는 오기였음 |
 | 10 | Cloudflare 등록기관·NS·DNSSEC·proxy·Pages/Workers | 미확인 |
 | 11 | GitHub App/Connector·저장소별 secrets | 미확인 |
 | 12 | prod(GCP·Supabase·SMTP 도메인) | 미생성/미확인 — 출시 전 별도 승인 |
