@@ -1,6 +1,6 @@
 # DEVELOPMENT_ENVIRONMENT — CozyBuilder 개발환경 SSOT
 
-> **Common Brain OS v1.0** · 최초 작성 2026-07-18 (클로 전수 실측)
+> **Common Brain OS v1.0** · 최초 작성 2026-07-18 (클로 전수 실측) · 최근 갱신 2026-07-20
 > 개발 하드웨어·설치 도구·계정/콘솔·도메인/DNS·빌드/배포 환경의 **단일 소유 문서(SSOT)**.
 > 프로젝트 작업 전 이 문서를 먼저 읽는다 — **여기 기록된 값을 코지에게 다시 묻지 않는다** ([PLAYBOOK.md P12](../../PLAYBOOK.md)).
 
@@ -14,7 +14,7 @@
 
 ## 1. 하드웨어
 
-### 1.1 메인 개발 PC (Windows) — [실측 2026-07-18]
+### 1.1 Windows 개발 PC — [실측 2026-07-18 · 화면 재확인 2026-07-20]
 
 | 항목 | 값 |
 |---|---|
@@ -23,15 +23,16 @@
 | CPU | Intel **Core i7-4790** @3.60GHz · 4코어/8스레드 |
 | GPU | NVIDIA **GeForce GTX 1060 3GB** (드라이버 32.0.15.6636) |
 | RAM | **16GB** = 8GB×2 (Samsung DDR3 1600MHz · 슬롯 2/2 전부 사용 — 증설 시 교체 필요) |
-| 저장장치 | **Crucial BX500 240GB SSD**(CT240BX500SSD1) 단일 — SATA(IDE 모드 보고) |
-| 볼륨 | **C:**(OS+작업 동일 드라이브) 총 223GB · **남은 50GB** ⚠ 용량 여유 적음 |
+| 저장장치 | **Crucial BX500 240GB SSD**(CT240BX500SSD1) 단일 — Windows 표시 총 224GB |
+| 볼륨 | **C:**(OS+작업 동일 드라이브) · 사용 약 172GB · **남은 약 52GB** ⚠ 용량 여유 적음 |
 | 작업 경로 | `C:\projects\` |
-| OS | **Windows 10 Home** 10.0.19045 |
+| OS | **Windows 10 Home 22H2** · 10.0.19045 · 64비트(x64) |
 | 가상화 | CPU 펌웨어 VT **비활성**(VirtualizationFirmwareEnabled=False) · HypervisorPresent=True(OS 보고) · **WSL 미설치** · Docker 미설치 |
 | 네트워크 | Realtek PCIe GbE (유선) |
 | 모니터 | 1920×1080(주) + 1920×1200 듀얼 |
 | Android 빌드 | **가능** — [실측] cozyrent v15 release APK/AAB 빌드 성공(2026-07-18) |
 | iOS 빌드 | **불가** — macOS/Xcode 필요(이 PC는 Windows) |
+| 운영 역할 | Windows 전용·Android 보조 개발 및 기존 로컬 프로젝트 유지 |
 
 - 종전 구두 정보와 대조: ASRock H81M-DGS ✔(R2.0) · RAM 8GB×2 ✔(총 16GB) · `C:\projects` ✔ ·
   "SSD/HDD 보유" → **실측은 SSD 1개뿐**(HDD 미검출 — 분리·미장착 여부 [미확인]).
@@ -40,10 +41,24 @@
 
 - 이 PC에서 실측 불가. 모델·CPU·RAM·저장장치·용도·빌드 가능 범위 전부 [미확인]. 확인되면 이 표를 채운다.
 
-### 1.3 Apple 장비 — [미확인]
+### 1.3 MacBook Air (Apple 메인 개발 장비) — [콘솔 2026-07-20]
 
-- Mac mini 등 Apple 실보유 장비 **확인된 것 없음**(이 PC에 연결 이력·문서 근거 없음). 구매 검토는 보유가 아니므로 기재하지 않는다.
-- 따라서 macOS·Xcode·iOS 빌드 환경 전체 [미확인]. iOS 빌드는 현재 조직 전체에서 불가로 간주.
+| 항목 | 값 |
+|---|---|
+| 모델 | **MacBook Air 13형 (M3, 2024년 모델)** |
+| 칩 | **Apple M3** |
+| 메모리 | **24GB 통합 메모리** |
+| 저장장치 | **1TB SSD** · macOS 표시 총 **994.66GB** |
+| 초기 가용 공간 | **969.55GB 사용 가능**(초기화 직후 확인) |
+| 디스플레이 | 13.6형 내장 Retina · **2560×1664** |
+| macOS | **macOS Sequoia 15.2** 확인 · **15.7 업데이트 진행 시작**(2026-07-20) |
+| AppleCare+ | **2028-03-18 만료** |
+| 활성화 | 판매자 계정 잠금 없이 정상 활성화·초기 설정 완료 |
+| FileVault | 초기 설정에서 디스크 암호화 켜기 선택 |
+| 운영 역할 | iOS/Xcode 빌드·App Store 배포 및 이동형 메인 개발 장비 |
+
+- 구입가: **1,325,000원** — 장비비 증빙·세무 처리는 별도 비용 문서가 소유한다.
+- 일련번호 원문은 보안상 이 문서에 기록하지 않는다.
 
 ### 1.4 실기기 (테스트 폰)
 
@@ -87,7 +102,19 @@ Cloudflare Wrangler · Codex CLI. (필요해지면 설치 후 이 표를 갱신.
 TypeScript 5.9.3 · Vite 6.4.3 · Vitest 2.1.9 · React 18.3.1 · Tailwind CSS 4.3.2 ·
 Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 로컬 버전은 각 저장소 package.json이 소유.)
 
-### 2.3 Apple 개발도구 — [미확인] (§1.3 — 장비 자체 미보유 확인)
+### 2.3 Apple 개발도구 — [콘솔 2026-07-20]
+
+| 도구 | 상태 | 비고 |
+|---|---|---|
+| macOS | Sequoia 15.2 확인 · 15.7 업데이트 진행 | 업데이트 완료 후 버전 재확인 필요 |
+| Xcode | **미설치** | macOS 업데이트 후 App Store에서 설치 예정 |
+| Xcode Command Line Tools | **미확인** | Xcode 설치 후 실측 |
+| Homebrew | **미설치/미확인** | 개발환경 세팅 시 설치 후 기록 |
+| Git / Node.js / npm | **미확인** | Mac 전역 버전 실측 필요 |
+| Android Studio / Android SDK | **미설치/미확인** | Mac 세팅 시 설치 후 기록 |
+| VS Code | **미설치/미확인** | Mac 세팅 시 설치 후 기록 |
+| Docker | **미설치/미확인** | 필요성 확정 후 설치 |
+| iOS 빌드·서명 | **아직 미검증** | Xcode·Apple Developer 설정 후 CozyRent 첫 빌드로 검증 |
 
 ---
 
@@ -113,6 +140,7 @@ Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 
 
 - **등록부에 있으나 폴더 없음**: lifetimestudio · house_rental · ShortsFactory(코드 없음은 등록부와 일치) — lifetimestudio는 🟢인데 로컬 clone 없음(§9).
 - GitHub Actions: 로컬 기준 cozybuilder-ops·ebookPublishingSystem 각 1개 워크플로. 나머지 저장소 0.
+- MacBook의 저장소 clone 경로는 아직 [미확인] — 개발환경 세팅 후 이 절에 추가한다.
 
 ---
 
@@ -121,7 +149,7 @@ Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 
 ### 4.1 GitHub — [실측/콘솔]
 
 - Org **cozybuilder** · 저장소 목록은 §3·PROJECTS.md. secrets: 저장소별 [미확인](이번 조사 범위 밖).
-- GitHub App/Connector 사용 여부 [미확인].
+- GitHub App/Connector: **ChatGPT 연결 및 문서 읽기·쓰기 동작 확인** — [콘솔 2026-07-20, 본 문서 갱신으로 검증].
 
 ### 4.2 Google Cloud (GCP) — 인증용 프로젝트
 
@@ -244,7 +272,7 @@ keystore 비밀번호/파일 · private key · 복구 코드 · 주민번호/사
 | # | 항목 | 상태 |
 |---|---|---|
 | 1 | LG Gram 노트북 사양·용도 | 미확인 |
-| 2 | Apple 장비(Mac mini 등) 실보유 | 미확인(현재 iOS 빌드 불가로 간주) |
+| 2 | MacBook Apple 개발 툴체인 | **장비 확인 완료** · macOS 업데이트/Xcode·Homebrew·Git·Node·Android Studio 설치 및 첫 iOS 빌드 미검증 |
 | 3 | iPhone 실보유·iOS 테스트 | 미확인 |
 | 4 | 메인 PC HDD(SSD 외 저장장치) | 미확인(실측은 SSD 1개뿐) |
 | 5 | ai-promotion: 폴더 git 미초기화 ↔ PROJECTS.md "GitHub PRIVATE" 기재 | **불일치 — 등록부 소유자(코비/코지) 판단 필요** |
@@ -253,7 +281,7 @@ keystore 비밀번호/파일 · private key · 복구 코드 · 주민번호/사
 | 8 | Play Console 개발자 계정명 · 라이선스 테스터 등록 상태 | 미확인 |
 | 9 | ~~Resend 도메인 TLD 차이~~ | **해소(2026-07-18)** — 실도메인 `mail.cozybuilder.co.kr`(Cloudflare 관리 · Verified). `.kr` 표기는 오기였음 |
 | 10 | Cloudflare 등록기관·NS·DNSSEC·proxy·Pages/Workers | 미확인 |
-| 11 | GitHub App/Connector·저장소별 secrets | 미확인 |
+| 11 | GitHub 저장소별 secrets | 미확인 · ChatGPT Connector 읽기/쓰기 확인 완료(2026-07-20) |
 | 12 | prod(GCP·Supabase·SMTP 도메인) | 미생성/미확인 — 출시 전 별도 승인 |
 
 ---
