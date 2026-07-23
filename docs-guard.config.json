@@ -10,6 +10,7 @@
     "PLAYBOOK.md",
     "PROJECTS.md",
     "DOC_APPROVALS.md",
+    "PROGRAM_INTEGRATION.md",
     "auto-docs.config.json",
     "docs-guard.config.json",
     "scripts/verify-docs-guard.mjs",
@@ -23,6 +24,7 @@
     "PLAYBOOK.md",
     "PROJECTS.md",
     "DOC_APPROVALS.md",
+    "PROGRAM_INTEGRATION.md",
     "auto-docs.config.json"
   ],
 
@@ -31,7 +33,8 @@
     "GLOBAL.md",
     "PLAYBOOK.md",
     "PROJECTS.md",
-    "DOC_APPROVALS.md"
+    "DOC_APPROVALS.md",
+    "PROGRAM_INTEGRATION.md"
   ],
 
   "templateRequiredDocs": [
@@ -46,6 +49,7 @@
     "PLAYBOOK.md",
     "PROJECTS.md",
     "DOC_APPROVALS.md",
+    "PROGRAM_INTEGRATION.md",
     "docs/governance/DOCUMENTATION_POLICY.md",
     "docs/governance/KNOWN_CONFLICTS.md",
     "docs/organization/ROLES.md",
@@ -144,6 +148,7 @@
     {"path": "PLAYBOOK.md", "class": "router", "owns": ["common-work-router"]},
     {"path": "PROJECTS.md", "class": "registry", "owns": ["project-registry"]},
     {"path": "DOC_APPROVALS.md", "class": "approval", "owns": ["auto-docs-approvals"]},
+    {"path": "PROGRAM_INTEGRATION.md", "class": "compatibility-router", "owns": ["program-integration-compatibility-route"]},
     {"path": "docs/governance/DOCUMENTATION_POLICY.md", "class": "governance", "owns": ["documentation-policy"]},
     {"path": "docs/governance/KNOWN_CONFLICTS.md", "class": "governance", "owns": ["known-policy-conflicts"]},
     {"path": "docs/organization/ROLES.md", "class": "organization", "owns": ["organization-roles"]},
