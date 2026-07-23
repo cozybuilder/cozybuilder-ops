@@ -40,6 +40,7 @@ CozyBuilder 전체 프로젝트의 운영 원칙·절차·프로젝트 포인터
 - [PLAYBOOK.md](PLAYBOOK.md)
 - [PROJECTS.md](PROJECTS.md)
 - [DOC_APPROVALS.md](DOC_APPROVALS.md)
+- [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md)
 - [auto-docs.config.json](auto-docs.config.json)
 <!-- AUTO-DOCS:END:ops-doc-map -->
 
