@@ -1,6 +1,6 @@
 # MULTI_DEVICE_GIT_SYNC — 다중 개발 장비 Git 동기화 기준
 
-> **Common Brain OS v1.0** · 확정 2026-07-21
+> **Common Brain OS v2.0 문서 구조** · 절차 확정 2026-07-21
 > Windows PC와 MacBook 등 여러 장비에서 동일 프로젝트를 수정할 때 적용하는 필수 기준.
 > GitHub 원격 저장소를 장비 간 소스 동기화의 기준으로 사용한다.
 
@@ -75,4 +75,4 @@ git pull --ff-only
 
 ---
 
-_Common Brain OS v1.0 · cozybuilder-ops · docs/operations_
+_Common Brain OS v2.0 문서 구조 · cozybuilder-ops · docs/operations_

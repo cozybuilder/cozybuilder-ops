@@ -4,17 +4,34 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   verify-docs:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
+          package-manager-cache: false
 
-      - name: Run documentation sync guard
+      - name: Validate guard syntax
+        run: node --check scripts/verify-docs-guard.mjs
+
+      - name: Run guard tests
+        run: node --test tests/docs-guard/*.test.mjs
+
+      - name: Run documentation guard
         run: node scripts/verify-docs-guard.mjs
+
+      - name: Verify auto-docs remains dry-run clean
+        run: node scripts/auto-docs.mjs --dry-run

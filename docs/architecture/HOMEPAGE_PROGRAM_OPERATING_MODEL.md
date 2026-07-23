@@ -1,5 +1,10 @@
 # HOMEPAGE PROGRAM OPERATING MODEL — CozyBuilder 공통 기준
 
+> **C-001 BLOCKED — 결정 전 적용 금지**
+> `PROGRAM_INTEGRATION.md`와 직접 충돌한다. 본문은 기존 정책 보존본이며, 어느 쪽도 현행 최종
+> 기준으로 임의 선택하지 않는다. 적용 전
+> [KNOWN_CONFLICTS.md](../governance/KNOWN_CONFLICTS.md)를 확인한다.
+
 ## 최상위 원칙
 
 CozyBuilder 홈페이지는 브랜드 허브이자 공통 계정·마이페이지·프로그램 탐색 플랫폼으로 운영한다.

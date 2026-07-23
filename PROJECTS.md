@@ -1,30 +1,21 @@
 # PROJECTS — 프로젝트 등록부
 
-> **Common Brain OS v1.0**
-> cozybuilder 프로젝트 목록·메타데이터·상태 포인터의 **단일 소유 문서(SSOT)**.
-> 개별 프로젝트의 살아있는 상태는 그 프로젝트의 `STATUS.md`가 소유한다 — 여기는 **포인터만** 둔다.
-
-신규 등록 절차는 [PLAYBOOK.md P1](PLAYBOOK.md)을 따른다.
-
----
+> **Common Brain OS v2.0**
+> 프로젝트 ID·등록 상태·기본 브랜치·원격 저장소·STATUS 포인터만 소유한다.
+> 제품 설명·기술 구조·진행 내역·다음 작업은 각 프로젝트 문서가 소유한다.
 
 ## 등록 상태 범례
 
-- 🟢 **active** — 운영/개발 중인 제품. 유지보수·확장 대상.
-- 🟡 **paused** — 일시 중단. 재개 가능한 상태.
-- 🔵 **candidate** — 로컬에 존재하나 정체/등록 미확정. 확인 후 분류.
-- 📋 **planned** — 개발 전(기획·문서 단계 또는 코드 없음).
-- 📦 **archived** — 종료/동결.
-
----
+- 🟢 `active` — 운영 또는 개발 중
+- 🟡 `paused` — 일시 중단
+- 🔵 `candidate` — 존재하지만 정체·편입 미확정
+- 📋 `planned` — 개발 전
+- 📦 `archived` — 종료 또는 동결
 
 ## 등록부
 
-> 아래 목록은 작업 디렉터리(`C:\projects`)의 **실제 git 메타데이터**와 코비 승인(2026-06-26)으로 확정한 사실이다.
-> 폴더명 kebab-case 통일과 STATUS.md 포인터 연결은 후속 작업으로 분리한다.
-
 | 프로젝트 | 상태 | 기본 브랜치 | 원격(origin) | STATUS 포인터 |
-|----------|------|-------------|--------------|----------------|
+|---|---|---|---|---|
 | cozybuilder-ops | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-ops | (본 저장소 — 운영 허브) |
 | homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | docs/STATUS.md |
 | ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | STATUS.md |
@@ -38,23 +29,13 @@
 | lifetimestudio | 🟢 active | `main` | github.com/cozybuilder/lifetimestudio | docs/STATUS.md |
 | ai-promotion | 🟢 active | `main` | github.com/cozybuilder/ai-promotion (PRIVATE) | docs/STATUS.md |
 
----
+## 관리 규칙
 
-## 운영 메모
-
-- 위 데이터의 출처는 채팅 기억이 아니라 디스크의 실제 `.git` 메타데이터 + 코비 승인이다.
-- **ClipMiner**(🟢)는 개발 공백이 있으나, 홈페이지 등록·웹서비스 편입 예정으로 장기 active로 간주한다.
-- **ClipMiner**: 2026-06-26 Common Brain 편입 완료(README/CLAUDE/docs/STATUS), GitHub(cozybuilder/clipminer) 초기 push 완료, 브랜치 main. 폴더명(ClipMiner→clipminer) 변경은 후속.
-- **movieminer**(🔵): 2026-07-03 최소 문서(README/STATUS) 구축·git init(`main`, 문서 우선 초기 커밋) 완료. remote 미연결(origin 없음) — push 보류. 상태 SSOT는 STATUS.md. 정체·active 전환은 미확정(코지 승인 전 미전환).
-- **house_rental / ShortsFactory**(📋)는 개발 전 — 착수 시 active로 승격한다.
-- **cozyrent**(🟢 active / 개발 중): 제품명 **코지임대**(다가구·상가주택 건물주용 임대관리 앱). Path `C:\projects\cozyrent`. GitHub `cozybuilder/cozyrent` **Visibility=PRIVATE 고정**(저장소 D-017, 공개 전환 금지·필요 시 별도 Lite/Open 신규). Platform=Android mobile app. 비즈니스 모델=첫 달 무료 + 구독 + 광고 가능. 진입 요약=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 2026-06-30 문서 초기 구축·remote 연결·main push 완료. 이후 **React+Vite+TS+Tailwind v4 앱 개발 진행 중** — 홈 상황판/호실 탭·상세/건물 탭(고정지출·시설·하자수선)/계약·입금·입주기록 구현. 저장 계층은 localStorage 추상화(후속 Capacitor SQLite 교체형).
-- **gratitude-note**: 2026-07-03 STATUS.md 포인터 연결 완료(docs/STATUS.md). README 진입문서화 완료.
-- **fieldnote-ai**(🟢 active / 개발 착수 전): 제품명 **말해짠AI**(별칭 말해짜나). 건축·인테리어 현장 회의·상담·협의 음성을 현장용어 반영 전사문·회의록·금액·일정·변경사항·확인 메시지로 변환하는 AI 현장기록 SaaS. GitHub `cozybuilder/fieldnote-ai` **Visibility=PRIVATE**. 2026-07-14 `docs/business-research/`에서 발굴·검증(검증·출시·기술 조사 완료) 후 정식 프로젝트로 승격, 상세 문서 SSOT를 프로젝트 저장소로 이전. 진입 문서=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 VITO·클로바 STT 기술 스파이크(공급자 실측 확정). business-research의 옛 상세 문서는 승격 안내 스텁만 남김(이중 SSOT 금지).
-- **lifetimestudio**(🟢 active / 개발 착수 전): 제품명 **평생사진관**. 사용자의 사진과 결과 선택 이력을 바탕으로 사실 보존·Best Me·Dream Me 사진상품을 생성하고, 사용자가 선호하는 자신의 모습을 점진적으로 반영하는 개인화 AI 사진관. GitHub `cozybuilder/lifetimestudio`. 플랫폼 방향=**데스크탑 웹프로그램 우선 개발 → 웹 검증 후 바로 모바일 앱 제작**. PWA는 필수 중간 단계에서 제외. 초기 MVP는 단일 인물 프로필·Best Me·Dream Me 중심이며 커플·가족은 후속 확장. 진입 문서=docs/AI_CONTEXT.md, 제품 기획=docs/PLAN.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 이미지 생성·편집·개인화 API 기술 스파이크.
-- **ai-promotion**(🟢 active / 개발 착수 전): 제품명 **AI Promotion**. 한국어 사용자를 위해 AI 서비스의 무료 플랜·무료 체험·크레딧·할인·추천 혜택과 공식 가입 경로를 역할·카테고리별로 구조화하는 웹 디렉터리. GitHub `cozybuilder/ai-promotion` **Visibility=PRIVATE**. 2026-07-15 보류 후보에서 사용자 승인으로 정식 프로젝트 승격. 긴 사전 검증 없이 정적 데이터 기반 MVP를 빠르게 개발·배포하고 실제 유입·클릭·제휴 전환으로 판단한다. 진입 문서=docs/AI_CONTEXT.md, 현재 상태 SSOT=docs/STATUS.md. 실제 코드는 착수 전 — 다음 작업은 웹 초기화, 샘플 데이터, 홈·목록·상세·검색·필터 구현.
-- 폴더명 kebab-case 통일은 후속 작업으로 분리한다.
-- 등록부 행이 늘거나 메타데이터가 바뀔 때만 이 문서를 수정한다 ([GLOBAL.md §2 소유권](GLOBAL.md)).
-
----
-
-_Common Brain OS v1.0 · cozybuilder-ops_
+- 한 프로젝트는 한 행만 가진다.
+- 이 문서는 등록부 행의 값이 바뀔 때만 수정한다.
+- 프로젝트 상세는 STATUS 포인터를 먼저 확인한다. `AI_CONTEXT.md`가 있으면 함께 읽고,
+  없으면 해당 저장소 README와 STATUS를 진입 정본으로 사용한다.
+- 과거 운영 메모는
+  [PROJECTS_OPERATING_NOTES_2026-07-23.md](docs/history/PROJECTS_OPERATING_NOTES_2026-07-23.md)에
+  비정본 archive로 보존한다.
+- 신규 등록 절차는 [PROJECT_LIFECYCLE.md](docs/playbooks/PROJECT_LIFECYCLE.md)를 따른다.

@@ -1,44 +1,9 @@
 {
-  "_comment": "Auto Documentation Sync capability (무엇을/어떻게). 권한(누가/언제)은 DOC_APPROVALS.md. fail-closed: DOC_APPROVALS active 없으면 실행 안 함.",
-  "runtime": "none-in-batch-1",
+  "_comment": "Auto Documentation Sync capability. 권한은 DOC_APPROVALS.md. active 승인+구현 generator+마커가 모두 일치할 때만 수동 실행.",
+  "schemaVersion": 2,
+  "runtime": "manual-local-v1",
   "markerFormat": "<!-- AUTO-DOCS:START:<block_id> --> ... <!-- AUTO-DOCS:END:<block_id> -->",
   "blocks": [
-    {
-      "block_id": "status-recent-changes",
-      "repository": "*",
-      "document": "docs/STATUS.md",
-      "mode": "append",
-      "triggers": ["program-repo PR source change"],
-      "dataSource": "changed-files",
-      "tier": "auto"
-    },
-    {
-      "block_id": "status-verification",
-      "repository": "*",
-      "document": "docs/STATUS.md",
-      "mode": "regenerate",
-      "triggers": ["build or test result change"],
-      "dataSource": "selftest-build-result",
-      "tier": "auto"
-    },
-    {
-      "block_id": "readme-doc-links",
-      "repository": "*",
-      "document": "README.md",
-      "mode": "regenerate",
-      "triggers": ["docs file add or remove"],
-      "dataSource": "docs-tree",
-      "tier": "auto"
-    },
-    {
-      "block_id": "readme-commands",
-      "repository": "*",
-      "document": "README.md",
-      "mode": "regenerate",
-      "triggers": ["package.json scripts change"],
-      "dataSource": "package.json#scripts",
-      "tier": "auto"
-    },
     {
       "block_id": "ops-doc-map",
       "repository": "cozybuilder-ops",
@@ -46,35 +11,18 @@
       "mode": "regenerate",
       "triggers": ["rootRequiredDocs change", "root doc add or remove"],
       "dataSource": "docs-guard.config.json#rootRequiredDocs",
-      "tier": "auto"
-    },
-    {
-      "block_id": "projects-meta",
-      "repository": "cozybuilder-ops",
-      "document": "PROJECTS.md",
-      "mode": "regenerate",
-      "triggers": ["registry metadata change"],
-      "dataSource": "registry-meta",
-      "tier": "auto",
-      "note": "branch/origin/pointer 정규화만. 상태 판정 제외."
-    },
-    {
-      "block_id": "prog-list",
-      "repository": "cozybuilder-ops",
-      "document": "PROGRAM_INTEGRATION.md",
-      "mode": "regenerate",
-      "triggers": ["PROJECTS official program list change"],
-      "dataSource": "PROJECTS.md",
-      "tier": "auto"
+      "generator": "ops-doc-map",
+      "tier": "manual"
     },
     {
       "block_id": "playbook-automation-index",
       "repository": "cozybuilder-ops",
-      "document": "PLAYBOOK.md",
+      "document": "docs/playbooks/DOCUMENTATION_MAINTENANCE.md",
       "mode": "regenerate",
       "triggers": ["script or workflow add"],
       "dataSource": "scripts-workflows",
-      "tier": "auto"
+      "generator": "playbook-automation-index",
+      "tier": "manual"
     }
   ]
 }
