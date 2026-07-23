@@ -1,8 +1,10 @@
 # DEVELOPMENT_ENVIRONMENT — CozyBuilder 개발환경 SSOT
 
-> **Common Brain OS v1.0** · 최초 작성 2026-07-18 (클로 전수 실측) · 최근 갱신 2026-07-20
+> **Common Brain OS v2.0 문서 구조** · 최초 작성 2026-07-18 (클로 전수 실측) · 최근 실측 갱신 2026-07-20
 > 개발 하드웨어·설치 도구·계정/콘솔·도메인/DNS·빌드/배포 환경의 **단일 소유 문서(SSOT)**.
-> 프로젝트 작업 전 이 문서를 먼저 읽는다 — **여기 기록된 값을 코지에게 다시 묻지 않는다** ([PLAYBOOK.md P12](../../PLAYBOOK.md)).
+> 환경 정보가 필요한 작업에서 이 문서를 먼저 읽고
+> [ENVIRONMENT_VERIFICATION.md](../playbooks/ENVIRONMENT_VERIFICATION.md)를 따른다.
+> 여기서 확인된 값을 코지에게 다시 묻지 않는다.
 
 각 항목은 세 등급으로 구분한다. 등급 없는 항목은 없다 — 추정으로 채운 값은 없다.
 
@@ -286,4 +288,4 @@ keystore 비밀번호/파일 · private key · 복구 코드 · 주민번호/사
 
 ---
 
-_Common Brain OS v1.0 · cozybuilder-ops · docs/operations_
+_Common Brain OS v2.0 문서 구조 · cozybuilder-ops · docs/operations_

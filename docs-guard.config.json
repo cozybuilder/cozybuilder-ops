@@ -1,22 +1,43 @@
 {
-  "_comment": "cozybuilder docs-guard config v1. 필수문서/센티넬/검사옵션의 SSOT. 목록은 여기서만 관리한다.",
-
+  "_comment": "cozybuilder docs-guard v2. 문서 존재·링크·소유권·필독 컨텍스트·문서 계약의 기계 SSOT.",
+  "schemaVersion": 2,
   "selfProjectName": "cozybuilder-ops",
   "selfRepoName": "cozybuilder-ops",
+
+  "requiredFiles": [
+    "README.md",
+    "GLOBAL.md",
+    "PLAYBOOK.md",
+    "PROJECTS.md",
+    "DOC_APPROVALS.md",
+    "auto-docs.config.json",
+    "docs-guard.config.json",
+    "scripts/verify-docs-guard.mjs",
+    "scripts/auto-docs.mjs",
+    ".github/workflows/docs-guard.yml"
+  ],
 
   "rootRequiredDocs": [
     "README.md",
     "GLOBAL.md",
     "PLAYBOOK.md",
     "PROJECTS.md",
-    "PROGRAM_INTEGRATION.md",
     "DOC_APPROVALS.md",
     "auto-docs.config.json"
   ],
 
+  "rootMarkdownAllowlist": [
+    "README.md",
+    "GLOBAL.md",
+    "PLAYBOOK.md",
+    "PROJECTS.md",
+    "DOC_APPROVALS.md"
+  ],
+
   "templateRequiredDocs": [
     "templates/project-template/README.md",
-    "templates/project-template/STATUS.md"
+    "templates/project-template/docs/AI_CONTEXT.md",
+    "templates/project-template/docs/STATUS.md"
   ],
 
   "markdownLinkCheckTargets": [
@@ -24,16 +45,146 @@
     "GLOBAL.md",
     "PLAYBOOK.md",
     "PROJECTS.md",
-    "PROGRAM_INTEGRATION.md",
     "DOC_APPROVALS.md",
+    "docs/governance/DOCUMENTATION_POLICY.md",
+    "docs/governance/KNOWN_CONFLICTS.md",
+    "docs/organization/ROLES.md",
+    "docs/strategy/BUSINESS_DIRECTION.md",
+    "docs/playbooks/PROJECT_LIFECYCLE.md",
+    "docs/playbooks/AI_COLLABORATION.md",
+    "docs/playbooks/DOCUMENTATION_MAINTENANCE.md",
+    "docs/playbooks/ENVIRONMENT_VERIFICATION.md",
+    "docs/playbooks/AGENT_OPERATIONS.md",
+    "docs/playbooks/AI_VIDEO_PRODUCTION.md",
+    "docs/playbooks/EXTERNAL_INTEGRATION_DIAGNOSTICS.md",
+    "docs/architecture/PROGRAM_INTEGRATION.md",
+    "docs/architecture/HOMEPAGE_PROGRAM_OPERATING_MODEL.md",
+    "docs/operations/DEVELOPMENT_ENVIRONMENT.md",
+    "docs/operations/MULTI_DEVICE_GIT_SYNC.md",
+    "docs/operations/PM_INCIDENTS.md",
+    "docs/operations/GEMINI_USAGE_GUIDE.md",
+    "templates/product-plan/PLAN.md",
     "templates/project-template/README.md",
-    "templates/project-template/STATUS.md"
+    "templates/project-template/docs/AI_CONTEXT.md",
+    "templates/project-template/docs/STATUS.md"
   ],
   "markdownLinkIgnorePrefixes": ["http://", "https://", "#", "mailto:"],
 
+  "mandatoryContext": {
+    "orderedFiles": ["GLOBAL.md", "PLAYBOOK.md", "PROJECTS.md"],
+    "maxTotalBytes": 24576,
+    "maxBytesByFile": {
+      "GLOBAL.md": 8192,
+      "PLAYBOOK.md": 8192,
+      "PROJECTS.md": 8192
+    }
+  },
+
+  "documentContracts": [
+    {
+      "path": "GLOBAL.md",
+      "allowedH2": [
+        "1. 헌법의 범위",
+        "2. 핵심 원칙",
+        "3. 권한과 승인",
+        "4. 안전·데이터 불변식",
+        "5. 핵심 문서 소유권",
+        "6. 저장소·변경 규약",
+        "7. 기준의 변경",
+        "8. OS 버전"
+      ],
+      "forbiddenRegex": ["20[0-9]{2}-[0-9]{2}-[0-9]{2}", "✅"]
+    },
+    {
+      "path": "PLAYBOOK.md",
+      "allowedH2": [
+        "P0. 필수 진입 순서",
+        "P1. 공통 실행 흐름",
+        "P2. 절차 라우터",
+        "P3. 완료 계약",
+        "P4. 문서 변경 최소 절차"
+      ],
+      "forbiddenRegex": ["20[0-9]{2}-[0-9]{2}-[0-9]{2}", "## P[5-9]|## P1[0-9]"]
+    },
+    {
+      "path": "PROJECTS.md",
+      "allowedH2": ["등록 상태 범례", "등록부", "관리 규칙"],
+      "forbiddenH2": ["운영 메모", "변경 이력", "완료 내역"]
+    },
+    {
+      "path": "templates/project-template/docs/AI_CONTEXT.md",
+      "maxBytes": 16384,
+      "requiredH2": [
+        "제품 정의",
+        "확정 범위",
+        "제품·데이터 불변식",
+        "기술 기준",
+        "안전·금지선",
+        "문서 라우팅"
+      ],
+      "forbiddenH2": ["현재 상태", "변경 이력", "완료 내역", "검증 로그"]
+    },
+    {
+      "path": "templates/project-template/docs/STATUS.md",
+      "maxBytes": 12288,
+      "requiredH2": [
+        "기준",
+        "진행 중",
+        "OPEN / BLOCKED",
+        "최신 검증 기준",
+        "승인된 다음 작업",
+        "최근 완료"
+      ],
+      "forbiddenH2": ["변경 이력", "작업 이력", "전체 완료", "상세 검증"]
+    }
+  ],
+
+  "documentRegistry": [
+    {"path": "GLOBAL.md", "class": "constitution", "owns": ["organization-constitution"]},
+    {"path": "PLAYBOOK.md", "class": "router", "owns": ["common-work-router"]},
+    {"path": "PROJECTS.md", "class": "registry", "owns": ["project-registry"]},
+    {"path": "DOC_APPROVALS.md", "class": "approval", "owns": ["auto-docs-approvals"]},
+    {"path": "docs/governance/DOCUMENTATION_POLICY.md", "class": "governance", "owns": ["documentation-policy"]},
+    {"path": "docs/governance/KNOWN_CONFLICTS.md", "class": "governance", "owns": ["known-policy-conflicts"]},
+    {"path": "docs/organization/ROLES.md", "class": "organization", "owns": ["organization-roles"]},
+    {"path": "docs/strategy/BUSINESS_DIRECTION.md", "class": "strategy", "owns": ["business-direction"]},
+    {"path": "docs/playbooks/PROJECT_LIFECYCLE.md", "class": "playbook", "owns": ["project-lifecycle"]},
+    {"path": "docs/playbooks/AI_COLLABORATION.md", "class": "playbook", "owns": ["ai-collaboration"]},
+    {"path": "docs/playbooks/DOCUMENTATION_MAINTENANCE.md", "class": "playbook", "owns": ["documentation-maintenance"]},
+    {"path": "docs/playbooks/ENVIRONMENT_VERIFICATION.md", "class": "playbook", "owns": ["environment-verification"]},
+    {"path": "docs/playbooks/AGENT_OPERATIONS.md", "class": "playbook", "owns": ["agent-operations"]},
+    {"path": "docs/playbooks/AI_VIDEO_PRODUCTION.md", "class": "playbook", "owns": ["ai-video-production-routing"]},
+    {"path": "docs/playbooks/EXTERNAL_INTEGRATION_DIAGNOSTICS.md", "class": "playbook", "owns": ["external-integration-diagnostics"]},
+    {"path": "docs/architecture/PROGRAM_INTEGRATION.md", "class": "architecture-conflict", "owns": ["legacy-independent-program-policy"]},
+    {"path": "docs/architecture/HOMEPAGE_PROGRAM_OPERATING_MODEL.md", "class": "architecture-conflict", "owns": ["homepage-ab-program-policy"]},
+    {"path": "docs/operations/DEVELOPMENT_ENVIRONMENT.md", "class": "operations", "owns": ["development-environment"]},
+    {"path": "docs/operations/MULTI_DEVICE_GIT_SYNC.md", "class": "operations", "owns": ["multi-device-git-sync"]},
+    {"path": "docs/operations/PM_INCIDENTS.md", "class": "incident", "owns": ["pm-incidents"]},
+    {"path": "docs/operations/GEMINI_USAGE_GUIDE.md", "class": "operations", "owns": ["gemini-usage"]},
+    {"path": "templates/product-plan/PLAN.md", "class": "template", "owns": ["product-plan-template"]},
+    {"path": "templates/project-template/README.md", "class": "template", "owns": ["project-readme-template"]},
+    {"path": "templates/project-template/docs/AI_CONTEXT.md", "class": "template", "owns": ["project-ai-context-template"]},
+    {"path": "templates/project-template/docs/STATUS.md", "class": "template", "owns": ["project-status-template"]}
+  ],
+
+  "documentCollections": [
+    {"root": "docs/business-research", "class": "research-collection", "owns": ["business-research-portfolio"]},
+    {"root": "docs/business", "class": "business-library", "owns": ["business-model-library"]}
+  ],
+
+  "ownershipRegistryRoots": [
+    "docs",
+    "templates"
+  ],
+
+  "archivePolicy": {
+    "roots": ["docs/history"],
+    "requiredMarker": "ARCHIVE — 현재 SSOT 아님"
+  },
+
   "projectsTable": {
     "file": "PROJECTS.md",
-    "requiredColumns": ["프로젝트", "상태", "STATUS 포인터"],
+    "requiredColumns": ["프로젝트", "상태", "기본 브랜치", "원격(origin)", "STATUS 포인터"],
     "statusPointerColumn": "STATUS 포인터"
   },
 
@@ -63,15 +214,31 @@
     "configFile": "auto-docs.config.json",
     "approvalsFile": "DOC_APPROVALS.md",
     "approvalsTable": {
-      "requiredColumns": ["approval_id", "status", "block_id"],
+      "requiredColumns": [
+        "approval_id",
+        "status",
+        "approved_by",
+        "approved_at",
+        "last_changed_at",
+        "last_changed_by",
+        "repository",
+        "document",
+        "block_id",
+        "mode",
+        "allowed_triggers",
+        "allowed_updates",
+        "forbidden_updates",
+        "required_checks",
+        "linked_config",
+        "linked_commit_or_pr",
+        "notes"
+      ],
       "blockIdColumn": "block_id",
       "statusColumn": "status"
     },
     "markerScanTargets": [
       "README.md",
-      "PROJECTS.md",
-      "PROGRAM_INTEGRATION.md",
-      "PLAYBOOK.md"
+      "docs/playbooks/DOCUMENTATION_MAINTENANCE.md"
     ]
   }
 }

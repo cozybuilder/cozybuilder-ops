@@ -1,73 +1,54 @@
 # cozybuilder-ops — Common Brain
 
-> **Common Brain OS v1.0**
-> Cozybuilder 전체 프로젝트를 관장하는 공통 운영 저장소(Single Source of Truth).
+CozyBuilder 전체 프로젝트의 운영 원칙·절차·프로젝트 포인터를 관리하는 GitHub SSOT다.
 
-이 저장소는 코드가 아니라 **결정과 규칙**을 담는다.
-모든 운영 결정은 GitHub에 코드를 올리기 **전에** 이곳 문서에 먼저 기록한다.
+## 기본 진입
 
----
+프로젝트 작업 전 다음 세 문서만 항상 읽는다.
 
-## 핵심 원칙 (요약)
+1. [GLOBAL.md](GLOBAL.md) — 불변 원칙과 최상위 권한
+2. [PLAYBOOK.md](PLAYBOOK.md) — 공통 흐름과 조건별 상세 절차 라우터
+3. [PROJECTS.md](PROJECTS.md) — 대상 저장소와 STATUS 포인터
 
-전체 정의는 [GLOBAL.md](GLOBAL.md)에 있다. 여기서는 한 줄 요약만 둔다.
+그다음 `PLAYBOOK.md`가 지정한 조건부 문서와 대상 프로젝트의 STATUS를 읽는다.
+`AI_CONTEXT.md`가 있으면 함께 읽고, 없으면 README와 STATUS를 진입 정본으로 사용한다.
 
-1. **Document First, GitHub Second** — 결정은 먼저 문서에 적고, GitHub 작업은 그 문서를 반영할 뿐이다.
-2. **Single Source of Truth (SSOT)** — 모든 사실은 정확히 한 곳에만 존재한다. 다른 곳에서는 **복제하지 않고 링크**한다.
+## 문서 지도
 
----
+| 영역 | 진입점 | 읽는 시점 |
+|---|---|---|
+| 문서 분류·소유·경량화 | [DOCUMENTATION_POLICY.md](docs/governance/DOCUMENTATION_POLICY.md) | 문서 변경 전 |
+| 프로젝트 등록·STATUS | [PROJECT_LIFECYCLE.md](docs/playbooks/PROJECT_LIFECYCLE.md) | 신규 프로젝트·상태 갱신 |
+| AI 지시·보고·검수 | [AI_COLLABORATION.md](docs/playbooks/AI_COLLABORATION.md) | AI 협업 |
+| 문서 가드·자동화 | [DOCUMENTATION_MAINTENANCE.md](docs/playbooks/DOCUMENTATION_MAINTENANCE.md) | 구조·자동수정 |
+| 역할 | [ROLES.md](docs/organization/ROLES.md) | 책임·승인 확인 |
+| 사업 방향·경제성 | [BUSINESS_DIRECTION.md](docs/strategy/BUSINESS_DIRECTION.md) | 우선순위·비용 판단 |
+| 개발환경 | [DEVELOPMENT_ENVIRONMENT.md](docs/operations/DEVELOPMENT_ENVIRONMENT.md) | 장비·계정·빌드 |
+| 미해결 기준 충돌 | [KNOWN_CONFLICTS.md](docs/governance/KNOWN_CONFLICTS.md) | 충돌 주제 작업 전 |
+| 프로그램 운영 모델 | [PROGRAM_INTEGRATION.md](docs/architecture/PROGRAM_INTEGRATION.md) · [HOMEPAGE 모델](docs/architecture/HOMEPAGE_PROGRAM_OPERATING_MODEL.md) | 충돌 결정 후 |
+| 신규 프로젝트 골격 | [templates/project-template/](templates/project-template/) | 프로젝트 생성 |
+| 제품 기획 템플릿 | [PLAN.md](templates/product-plan/PLAN.md) | 제품 기획 |
+| 과거 기록 | [docs/history/](docs/history/) | 과거 조사만 |
 
-## 문서 지도 (Document Map)
+## 루트 필수 파일
 
-| 문서 | 역할 | 단독 소유 정보 (SSOT) |
-|------|------|----------------------|
-| [README.md](README.md) | 진입점 · 길찾기 | (소유 없음 — 안내만) |
-| [GLOBAL.md](GLOBAL.md) | 헌법 · 전 조직 표준/규칙 | 원칙, 명명/브랜치/커밋 규약, 문서 소유권 |
-| [PLAYBOOK.md](PLAYBOOK.md) | 운영 절차 · 반복 워크플로 | "어떻게 하는가" 절차 |
-| [PROJECTS.md](PROJECTS.md) | 프로젝트 등록부 | 프로젝트 목록·메타데이터·상태 포인터 |
-| [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md) | 프로그램 통합 아키텍처 | Homepage↔독립 프로그램 경계(정책) |
-| [DOC_APPROVALS.md](DOC_APPROVALS.md) | 자동수정 승인 이력 | 자동 문서수정 승인 범위·승인/철회 이력 |
-| [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md) | Gemini 운영 참고 | CozyBuilder 내 Gemini 역할·검증 기준·현재 계정 기준 |
-| [docs/business-research/](docs/business-research/) | 1인기업 비즈니스 리서치 | 수익 구조 분석·파생 아이디어·검증 및 개발 우선순위 |
-| [auto-docs.config.json](auto-docs.config.json) | 자동수정 설정 | 자동수정 블록·트리거 정의(capability) |
-| [templates/project-template/](templates/project-template/) | 신규 프로젝트 골격 | 표준 스캐폴드 |
-
-### 루트 문서 목록 (자동 생성)
-
-> 아래 목록은 `auto-docs`(block: ops-doc-map)가 `docs-guard.config.json`에서 생성한다. 수동 편집 금지.
+> 아래 블록은 `auto-docs`가 생성한다. 수동 편집하지 않는다.
 
 <!-- AUTO-DOCS:START:ops-doc-map -->
 - [README.md](README.md)
 - [GLOBAL.md](GLOBAL.md)
 - [PLAYBOOK.md](PLAYBOOK.md)
 - [PROJECTS.md](PROJECTS.md)
-- [PROGRAM_INTEGRATION.md](PROGRAM_INTEGRATION.md)
 - [DOC_APPROVALS.md](DOC_APPROVALS.md)
 - [auto-docs.config.json](auto-docs.config.json)
 <!-- AUTO-DOCS:END:ops-doc-map -->
 
----
+## 검증
 
-## 읽는 순서
+```bash
+node scripts/verify-docs-guard.mjs
+node scripts/auto-docs.mjs --dry-run
+```
 
-1. **README.md** (이 문서) — 전체 구조 파악
-2. **GLOBAL.md** — 무엇이 규칙인지
-3. **PLAYBOOK.md** — 어떻게 일하는지
-4. **PROJECTS.md** — 무엇을 운영 중인지
-5. (필요 시) **PROGRAM_INTEGRATION.md** — Homepage와 프로그램을 어떻게 연결하는지
-6. (Gemini 사용 시) **GEMINI_USAGE_GUIDE.md** — 역할·검증·실전 테스트 기준
-7. (신규 사업 조사 시) **docs/business-research/** — 1인기업 수익 구조·아이디어·우선순위 관리
-
----
-
-## 빠른 사용법
-
-- 새 프로젝트 추가 → [PLAYBOOK.md](PLAYBOOK.md)의 "신규 프로젝트 등록" 절차를 따른다.
-- 규칙을 바꾸고 싶다 → [GLOBAL.md](GLOBAL.md)를 수정하고 커밋한다. (Document First)
-- 프로젝트 상태가 궁금하다 → [PROJECTS.md](PROJECTS.md)에서 해당 프로젝트의 STATUS 포인터를 따라간다.
-- Gemini를 사용할 때 → [GEMINI_USAGE_GUIDE.md](GEMINI_USAGE_GUIDE.md)의 역할·검증 순서를 따른다.
-- 1인기업·SaaS 수익 구조를 조사할 때 → [docs/business-research/README.md](docs/business-research/README.md)에서 시작한다.
-
----
-
-_Common Brain OS v1.0 · cozybuilder-ops_
+문서 변경은 [DOCUMENTATION_POLICY.md](docs/governance/DOCUMENTATION_POLICY.md)에 따라 단독 소유
+위치와 이력 분리를 먼저 확인한다.

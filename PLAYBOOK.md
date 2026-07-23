@@ -1,386 +1,96 @@
-# PLAYBOOK — 운영 절차
+# PLAYBOOK — 공통 실행 라우터
 
-> **Common Brain OS v1.0**
-> 반복되는 운영 워크플로의 **단일 소유 문서**. "어떻게 하는가"를 담는다.
-> 규칙(무엇이 옳은가)은 [GLOBAL.md](GLOBAL.md)가 소유한다 — 여기서는 절차만 다룬다.
+> **Common Brain OS v2.0**
+> 모든 작업의 공통 시작·종료 흐름과 조건별 상세 절차의 진입 경로를 소유한다.
+> 상세 절차를 이 파일에 누적하지 않는다.
 
----
+## P0. 필수 진입 순서
 
-## P0. 모든 작업의 기본 흐름
+프로젝트 작업·검수·지시 전 다음 순서를 지킨다.
 
-> 원칙: [GLOBAL.md §1.1 Document First, GitHub Second](GLOBAL.md)
+1. GitHub의 최신 [`GLOBAL.md`](GLOBAL.md)를 읽는다.
+2. GitHub의 최신 `PLAYBOOK.md`를 읽는다.
+3. GitHub의 최신 [`PROJECTS.md`](PROJECTS.md)를 읽는다.
+4. `PROJECTS.md`에서 대상 저장소와 STATUS 포인터를 확인한다.
+5. 지정된 STATUS를 읽고, `docs/AI_CONTEXT.md`가 있으면 함께 읽는다. 기존 프로젝트에
+   `AI_CONTEXT.md`가 없으면 README와 STATUS를 진입 정본으로 사용하며 내용을 추측해 만들지 않는다.
+6. 아래 라우터와 프로젝트 문서가 지정하는 관련 SSOT를 읽는다.
 
-1. 결정한다.
-2. 해당 정보를 **소유하는 문서**에 기록한다. ([GLOBAL.md §2](GLOBAL.md))
-3. 실행(코드/저장소 작업)한다.
-4. 아래 P3 보고 형식으로 마무리한다.
+private 저장소는 인증된 GitHub 연결로 확인한다. 현재 GitHub 근거를 읽지 못하면
+`GitHub를 확인하지 않았다. 확인 후 답변하겠다.`라고 알리고 프로젝트 판단을 멈춘다.
 
-### P0.1 작업 도구/접근 경로 (GPT 모드) — 2026-07-09
+작업 시작 시 실제로 확인 가능한 모델명만 고지한다. 세부 라우팅·fallback을 알 수 없으면
+`라우팅 상태 확인 불가`라고 명시한다.
 
-> 도구별 저장소·영상 확인 능력이 달라 작업 라우팅을 명시한다. **환경 현황(변동 가능)** — 확정 규칙이 아니라 현재 방침.
+## P1. 공통 실행 흐름
 
-- **Custom GPT(코비)**: 영상 확인 가능(기능 보강됨). **GitHub private repo connector 접근 불가.** → 보조 PM·지시서 작성·보고 검토 용도로 유지.
-- **일반 GPT + 코비 PM 모드**(개인 맞춤형 지침에 코비 PM 핵심 규칙 입력 완료): GitHub private repo·영상 모두 확인 가능. → **private repo 직접 확인이 필요한 작업의 기본 경로(현재 방침)**.
-- private repo(예: cozyrent) 실제 파일/HEAD 직접 확인이 필요한 작업은 일반 GPT + 코비 PM 모드로 진행한다. Custom GPT만으로는 로컬 저장소 기준 대리 확인에 의존한다.
+1. **현재 주제 확정** — 목적·범위·완료조건·금지선을 정한다.
+2. **소유 문서 확인** — 기록할 정보의 유형과 단독 소유 위치를 정한다.
+3. **실제 근거 조사** — 문서·코드·diff·콘솔·로그를 읽기 전용으로 먼저 확인한다.
+4. **실행** — 승인 범위 안에서 구현·문서 반영을 수행한다.
+5. **검증** — 필요한 테스트·빌드·링크·데이터·실기기 범위를 확인한다.
+6. **마무리** — STATUS → commit → push 순서를 지킨다.
+7. **보고** — STATUS·commit·push·검증 결과와 잔여 위험을 포함한다.
+8. **정지** — 코지 승인 또는 명시적 권한 위임 없이 다음 주제를 열지 않는다.
 
----
+## P2. 절차 라우터
 
-## P1. 신규 프로젝트 등록
+| 작업 조건 | 추가로 읽을 문서 |
+|---|---|
+| 문서 생성·이동·요약·대규모 정리 | [DOCUMENTATION_POLICY.md](docs/governance/DOCUMENTATION_POLICY.md) → [DOCUMENTATION_MAINTENANCE.md](docs/playbooks/DOCUMENTATION_MAINTENANCE.md) |
+| 신규 프로젝트·저장소·STATUS·기준 승격 | [PROJECT_LIFECYCLE.md](docs/playbooks/PROJECT_LIFECYCLE.md) |
+| AI 지시·보고·검수·인수인계 | [AI_COLLABORATION.md](docs/playbooks/AI_COLLABORATION.md) |
+| 개발환경·장비·경로·콘솔·빌드/서명 | [ENVIRONMENT_VERIFICATION.md](docs/playbooks/ENVIRONMENT_VERIFICATION.md) |
+| 다중 장비 Git 전환 | [MULTI_DEVICE_GIT_SYNC.md](docs/operations/MULTI_DEVICE_GIT_SYNC.md) |
+| OAuth·결제·스토어·DNS·외부 API 장애 | [EXTERNAL_INTEGRATION_DIAGNOSTICS.md](docs/playbooks/EXTERNAL_INTEGRATION_DIAGNOSTICS.md) |
+| 에이전트 자동화·권한 위임 | [AGENT_OPERATIONS.md](docs/playbooks/AGENT_OPERATIONS.md) |
+| AI 영상 제작 | [AI_VIDEO_PRODUCTION.md](docs/playbooks/AI_VIDEO_PRODUCTION.md) |
+| 프로그램의 Homepage 귀속·독립 운영 판단 | [KNOWN_CONFLICTS.md](docs/governance/KNOWN_CONFLICTS.md) → 충돌한 두 아키텍처 문서 |
+| Gemini 사용 | [GEMINI_USAGE_GUIDE.md](docs/operations/GEMINI_USAGE_GUIDE.md) |
+| 제품 기획 | [PLAN.md](templates/product-plan/PLAN.md) |
+| 사업 우선순위·비용·유료 도구 | [BUSINESS_DIRECTION.md](docs/strategy/BUSINESS_DIRECTION.md) |
 
-1. `templates/project-template/`를 복사해 새 프로젝트 골격을 만든다.
-2. 골격의 플레이스홀더(`<PROJECT_NAME>` 등)를 채운다.
-3. [PROJECTS.md](PROJECTS.md) 등록부에 **한 행**을 추가한다 (목록의 SSOT).
-4. 프로젝트 상태는 그 프로젝트의 `STATUS.md`가 소유하고, PROJECTS.md는 포인터만 둔다.
-5. P3 형식으로 보고한다.
+라우터에 없는 새 반복 절차가 필요하면 `PLAYBOOK.md` 본문에 붙이지 않는다.
+[DOCUMENTATION_POLICY.md](docs/governance/DOCUMENTATION_POLICY.md)에 따라 조건부 절차 파일과
+라우터 행을 추가한다.
 
-## P2. STATUS 갱신
+## P3. 완료 계약
 
-- 개별 프로젝트의 살아있는 상태는 그 프로젝트의 `STATUS.md`에 기록한다.
-- 갱신 시 무엇이/언제/왜 바뀌었는지 한 줄이라도 남긴다.
-- 등록부 수준 메타데이터(이름·저장소·포인터)가 바뀐 경우에만 [PROJECTS.md](PROJECTS.md)를 함께 갱신한다.
-- **수동 갱신이 기본이자 필수다.** 클로가 작업 후 그 프로젝트 STATUS.md를 직접 갱신한다. 자동화는 이를 대체하지 않는다(→ P7 보조 기능).
-- **코드 변경이 있으면 그 프로젝트 STATUS.md를 갱신하지 않고 commit/push 하지 않는다.** (STATUS 갱신이 불필요한 변경이면 그 사유를 완료 보고에 명시 → P3.4)
+완료 보고에는 다음을 빠짐없이 포함한다.
 
-## P3. 표준 통신 형식 (Standard Communication Format)
+- STATUS 반영 여부 또는 불필요 사유
+- commit
+- push 성공 여부 또는 구체적 보류 사유
+- 검증 명령·결과·범위
+- 승인 범위·금지사항 준수
+- OPEN / BLOCKED / 검증 한계
 
-> 원칙: [GLOBAL.md §7 Communication Principles](GLOBAL.md).
-> **모든 지시와 보고는 복붙 가능한 블록 안에** 작성한다. **평문 지시/보고 금지.** 새 대화창에서도 예외 없다.
-> 방향별 템플릿: 지시는 P3.2, 보고는 P3.3. 완료 보고의 구속 규칙(Output Contract)은 P3.4.
+보고 문구가 아니라 실제 GitHub와 검증 근거를 비교해 완료를 판정한다.
+세부 템플릿과 승인 루프는 [AI_COLLABORATION.md](docs/playbooks/AI_COLLABORATION.md)를 따른다.
 
-### P3.1 마무리 순서 (STATUS → commit → push)
+### P3.3 표준 보고 형식 호환 포인터
 
-작업 완료 시 항상 아래 순서로 마무리한다.
+기존 도구가 참조하는 `P3.3` 보고 템플릿은
+[AI_COLLABORATION.md §2](docs/playbooks/AI_COLLABORATION.md)가 단독 소유한다.
 
-1. **STATUS 갱신** (해당 시) — 바뀐 상태를 STATUS.md에 반영.
-2. **commit** — [GLOBAL.md §4 커밋 규약](GLOBAL.md)을 따른다.
-3. **push** — 원격이 연결된 경우. 미연결이면 "원격 미연결 — push 보류"로 보고에 명시한다.
+### P3.4 Output Contract 호환 포인터
 
-### P3.2 표준 지시 형식 (Standard Instruction Format) — 코비 → 클로
+기존 도구가 참조하는 `P3.4` 출력 계약과 `P3.4.6` 자기 적용 규칙은
+[AI_COLLABORATION.md §2~§5](docs/playbooks/AI_COLLABORATION.md)가 단독 소유한다.
 
-코비가 클로에게 내리는 지시는 아래 구조를 **코드블록 안에** 채워 작성한다.
+#### P3.4.6 Self Validation
 
-```
-━━━━━━━━━━━━━━━━━━
-코비 → 클로
-작업명:
-━━━━━━━━━━━━━━━━━━
+출력 규칙을 추가·수정한 작업의 보고 자체가 새 규칙을 만족해야 한다. 미충족이면 즉시 새
+형식으로 다시 작성한다.
 
-■ 목적
-...
+## P4. 문서 변경 최소 절차
 
-■ 작업 내용
-...
+문서를 바꾸기 전에 정보 유형과 단독 소유 문서를 정한다. 변경 후에는 다음을 실행한다.
 
-■ 주의사항
-...
-
-■ 완료 조건
-...
-━━━━━━━━━━━━━━━━━━
-```
-
-### P3.3 표준 보고 형식 (Standard Reporting Format) — 클로 → 코지/코비
-
-클로의 완료 보고는 아래 구조를 ` ```text ` 코드블록 안에 채워 작성한다.
-수신자(코지/코비)는 **지시를 내린 사람**에 맞춘다.
-
-```text
-━━━━━━━━━━━━━━━━━━
-클로 → [코지/코비] 완료 보고
-작업명:
-━━━━━━━━━━━━━━━━━━
-
-■ 진행 방식
-...
-
-■ 변경 파일
-...
-
-■ 적용 원칙
-...
-
-■ 검증
-...
-
-■ Self Validation
-- 본 보고가 현재 Output Contract(P3.4)를 만족하는가? ✅ / ❌
-- 코드블록 밖 평문 출력이 없는가? ✅ / ❌
-- 질문/승인 요청이 동일 코드블록 안에 있는가? (해당 시) ✅ / ❌
-
-■ commit / push
-...
-
-■ 다음 액션 / 질문·승인 요청
-...
-━━━━━━━━━━━━━━━━━━
+```bash
+node scripts/verify-docs-guard.mjs
+node scripts/auto-docs.mjs --dry-run
 ```
 
-### P3.4 클로 완료 보고 표준 (Output Contract)
-
-> **구속 규칙(contract).** [GLOBAL.md §7 Communication Principles](GLOBAL.md)를 완료 보고에 대해 구체화한다.
-> 새 대화·새 프로젝트에서도 예외 없다.
-
-1. **모든 완료 보고는 ` ```text ` 코드블록 안에 작성한다.** 평문 보고 금지.
-   (fence 는 ` ```text ` 로 통일한다 — IDE/GitHub/ChatGPT/Claude/Gemini 호환성 확보.)
-2. **수신자**는 지시를 내린 사람(코지 또는 코비)에 맞춘다. 헤더: `클로 → [코지/코비] 완료 보고`.
-3. **구조**는 P3.3 템플릿을 따른다 (작업명 / 진행 방식 / 변경 파일 / 적용 원칙 / 검증 / commit·push / 다음 액션).
-4. **commit / push 결과를 항상 명시**한다 (성공 해시 / 실패 원인 / 보류 사유 중 하나).
-5. **작업 위치 가드**: 작업 위치가 지정 Repository와 다르면, 다른 작업을 멈추고
-   `작업 폴더가 잘못되었습니다`만 보고한다.
-6. **코드블록 밖 평문 출력을 금지**한다. 보고 본문 설명은 전부 코드블록 안에 둔다.
-7. **질문·승인 요청도 반드시 동일 코드블록 안에 포함**한다. 블록 밖에 별도 질문을 두지 않는다.
-8. 이 Output Contract 는 **완료 보고뿐 아니라 분석·진행 보고에도 동일하게 적용**한다.
-9. **완료 보고에는 STATUS.md 갱신 여부를 반드시 포함한다.** 예: `STATUS.md 반영 완료` 또는
-   `STATUS.md 갱신 불필요 — <사유>`. 코드 변경이 있는 작업은 P2에 따라 STATUS 갱신 없이 마무리할 수 없다.
-
-### P3.4.6 Self Validation
-
-1. 새로운 **출력 규칙을 추가/수정한 경우, 그 작업의 완료 보고 자체가 새 규칙을 만족**해야 한다.
-2. 규칙을 문서화했으나 실제 완료 보고가 이를 따르지 못하면 **표준 적용 실패**로 간주한다.
-3. 적용 실패 시, **수정된 형식으로 완료 보고를 즉시 재작성**한다.
-4. 보고의 `■ 검증`에 다음을 반드시 포함한다:
-
-   ```
-   ■ Self Validation
-   - 본 보고가 현재 Output Contract를 만족하는가? ✅ / ❌
-   - 코드블록 밖 평문 출력이 없는가? ✅ / ❌
-   - 질문/승인 요청이 동일 코드블록 안에 있는가? (해당 시) ✅ / ❌
-   ```
-
-## P4. 신규 저장소 부트스트랩
-
-1. 로컬에 디렉터리 생성 후 `git init -b main` ([GLOBAL.md §3](GLOBAL.md)).
-2. 골격 문서를 먼저 작성한다 (Document First).
-3. 첫 커밋을 만든다.
-4. 원격 저장소를 만들고 연결한 뒤 push 한다 (GitHub Second).
-
-## P5. 표준 진화 절차 (Standard Evolution Process)
-
-> 철학·원칙은 [GLOBAL.md §8 Standards Evolve Through Practice](GLOBAL.md)가 소유한다 — 여기서는 절차만 다룬다.
-> 이 절차를 완료해 commit/push 되기 전까지, 합의는 공식 기준정보가 아니다.
-
-```
-문제 발견
-   ↓
-패턴 확인 (실전에서 반복 등장 확인)
-   ↓
-코지(CEO) 승인
-   ↓
-코비(PM) 방향 정리 (저장 문서 결정: GLOBAL=철학·원칙 / PLAYBOOK=절차)
-   ↓
-클로(DEV) 문서 반영 + STATUS·현재 상태 기록
-   ↓
-commit
-   ↓
-push
-   ↓
-공식 기준 승격
-```
-
-- 저장 위치 판단: 철학·원칙·표준은 [GLOBAL.md](GLOBAL.md), 반복 절차는 본 문서. 중복 금지([GLOBAL.md §2](GLOBAL.md)).
-- 승격 요건: 최소 1회 실전 적용 또는 충분한 합의([GLOBAL.md §8.1](GLOBAL.md)).
-
-## P6. Documentation Sync Guard (문서 동기화 가드)
-
-> 목적: 프로젝트 구조·상태·기준정보 변경 시 **관련 문서 갱신 누락을 검출**한다.
-> 자동 수정하지 않는다. 철학은 [GLOBAL.md](GLOBAL.md)(Document First/SSOT) — 본 절은 **실행 절차**만 소유한다.
-
-### P6.1 범위와 한계
-
-- **검증한다**: ①루트 필수문서 존재 ②템플릿 필수문서 존재 ③레포 내부 마크다운 상대링크 무결성
-  ④PROJECTS.md STATUS 포인터 문법 ⑤PROJECTS.md 테이블 최소 구조.
-- **하지 않는다**: 자동 수정 / 타 레포·private STATUS 실존 검사 / 네트워크 호출.
-- **마크다운 링크 검사는 inline `[text](link)` 만 대상**이다. 이미지 `![alt]()`, reference-style
-  `[text][id]`, HTML `<a href>`, autolink `<https://…>`, 그리고 코드블록/인라인 코드 내부 표기는 1차 범위에서 제외한다.
-- **의미적 최신성(내용이 실제 최신인지)은 검증하지 못한다.** 통과 = 구조·링크·문법이 온전함을 뜻할 뿐.
-- 타 레포/private/URL 포인터는 실패가 아니라 **warning**.
-
-### P6.2 SSOT
-
-- 필수문서 목록·허용 센티넬·검사 옵션은 **`docs-guard.config.json` 이 단독 소유**한다.
-- 본 절은 목록을 복제하지 않는다 — 절차·실행·한계·config 위치만 둔다.
-
-### P6.3 실행
-
-- 로컬(1차 자기검증): `node scripts/verify-docs-guard.mjs` — Node 내장만, 의존성 없음.
-- CI(최종 백스톱): `.github/workflows/docs-guard.yml` 가 push/PR 시 setup-node 후 동일 스크립트 실행.
-- 판정: **error ≥ 1 → 실패(exit 1)**, warning만 있으면 통과(exit 0)하되 로그에 표시.
-
-### P6.4 클로 작업 규칙
-
-- 문서/구조/상태 변경 커밋 **전** 로컬 가드를 실행하고, 완료 보고 검증에 결과를 포함한다(P3.4 Self Validation 연계).
-
-### P6.5 항목·센티넬 추가 절차
-
-- 새 센티넬·검사 항목이 필요하면 먼저 본 절에 근거를 남긴 뒤 `docs-guard.config.json` 에 추가한다([GLOBAL.md §8](GLOBAL.md)).
-
-## P7. Auto Documentation Sync (기본 절차)
-
-> 목적: 승인된 범위 안에서 문서의 정해진 블록을 자동으로 최신화한다.
-> 본 절은 **기본 절차·원칙**만 정의한다. 실제 실행 런타임·마커 무결성 검사·프로그램 레포 워크플로는 2배치에서 구현한다.
-
-### P7.1 권한과 능력의 분리
-
-- **능력(무엇을/어떻게)**: `auto-docs.config.json` — 자동수정 가능한 블록·mode·트리거 정의.
-- **권한(누가/언제 승인)**: [DOC_APPROVALS.md](DOC_APPROVALS.md) — 승인 범위·승인/철회 이력(SSOT).
-- 소유권 지정은 [GLOBAL.md §2](GLOBAL.md). 두 파일은 `block_id` 로 연결되며 내용을 복제하지 않는다.
-- **STATUS 자동화는 보조 기능이다.** auto-docs의 status-recent-changes/status-verification 블록은
-  수동 STATUS 갱신(→ P2, 기본이자 필수)을 **대체하지 않고** 초안 생성·누락 감지용으로만 쓴다.
-
-### P7.2 fail-closed 원칙
-
-- 자동수정은 **AUTO-DOCS 마커 블록 내부**에서만 일어난다. 블록 밖 사람 본문은 무수정.
-  마커: `<!-- AUTO-DOCS:START:block_id -->` … `<!-- AUTO-DOCS:END:block_id -->`.
-- 해당 `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active` 일 때만 자동수정한다.
-  active 가 없으면(=proposed/revoked/superseded/누락) 자동수정하지 않고 **proposal-only** 로 둔다.
-- [GLOBAL.md](GLOBAL.md) 본문과 DOC_APPROVALS.md 자체는 자동수정 금지(사람만 수정).
-- 승인 범위 밖 변경은 다시 코지 승인을 받는다.
-
-### P7.3 배치 범위
-
-- 1배치(완료): DOC_APPROVALS.md / auto-docs.config.json 신설, GLOBAL §2 소유권, docs-guard 존재검사·링크대상 반영.
-- 2배치(진행): 자동수정 실행 스크립트(dry-run), 마커 무결성·`block_id`↔active 연결·중복/중첩 검사.
-- 미구현(별도 승인): bot 자동 commit/push, 프로그램 레포 워크플로 배포, 실제 파일 쓰기(--write).
-
-### P7.4 실행 방식 (v0 dry-run)
-
-- 안전검사: `node scripts/verify-docs-guard.mjs` (마커 무결성 + config↔승인 연결 포함).
-- 자동수정 dry-run: `node scripts/auto-docs.mjs --dry-run` — 실행 후보만 출력, **파일 쓰기·commit·push 없음**.
-- 실제 반영: `node scripts/auto-docs.mjs --apply` — **AUTO-DOCS 마커 내부만** 재생성(regenerate). 마커 밖·다른 파일은 손대지 않는다.
-- 판정 순서(모두 충족해야 실행): (1) `block_id` 가 [DOC_APPROVALS.md](DOC_APPROVALS.md) 에서 `status=active`
-  → (2) 대상 문서에 해당 AUTO-DOCS 마커가 정확히 1쌍 존재 → (3) 등록된 generator 존재.
-  하나라도 아니면 자동수정하지 않는다(fail-closed → proposal-only/보류). GLOBAL.md·DOC_APPROVALS.md 는 항상 제외.
-- **bot 자동 commit/push 는 아직 만들지 않는다.** `--apply` 는 파일만 수정하고, 커밋/푸시는 사람이 검토 후 수행한다.
-
-### P7.5 승인 에스컬레이션
-
-- 아래는 진행 전 반드시 코지 승인을 받는다: 실제 파일 자동수정(쓰기), bot commit/push, 승인 범위 밖 블록/문서,
-  마커를 새 문서에 추가, `auto-docs.config.json`·`DOC_APPROVALS.md`·가드 기준 변경.
-- 위험·중복·충돌 검토는 승인 "전"에 끝낸다. 코지 승인 "후"에는 재검토 없이 범위 그대로 반영한다([GLOBAL.md §8](GLOBAL.md)).
-- 승인 요청은 반드시 다음 표시를 사용한다: `🔴 [코지 승인 요청] 🔴`.
-
-### P7.6 자동화 명령어 색인 (자동 생성)
-
-> 아래는 `auto-docs`(block: playbook-automation-index)가 `scripts/`·`.github/workflows/`에서 생성한다. 수동 편집 금지.
-
-<!-- AUTO-DOCS:START:playbook-automation-index -->
-**scripts**
-- `scripts/auto-docs.mjs`
-- `scripts/verify-docs-guard.mjs`
-
-**workflows**
-- `.github/workflows/docs-guard.yml`
-<!-- AUTO-DOCS:END:playbook-automation-index -->
-
-## P8. 산출물 검수 기준 (Artifact Verification Criteria)
-
-> 검수는 GitHub web/raw 화면 인상이 아니라 **git 산출물**을 기준으로 한다.
-
-- 이모지·코드블록 fence·특수문자처럼 **뷰어/캐시/렌더링 차이**가 생길 수 있는 항목은
-  web/raw 조회만으로 실패 판정하지 않는다.
-- 클로가 로컬 git 근거를 제시하면 우선 인정한다: `git show origin/main:<파일>`, `git grep`,
-  필요 시 UTF-8 코드포인트/바이트 확인.
-- 코비 검수는 **산출물 중심**으로 한다: 커밋 확인 / 변경 파일 / 승인 범위 / docs-guard 결과 /
-  auto-docs 결과 / 위험 문서 침범 여부.
-- 이모지·특수문자 **표시 차이만으로 반복 커밋·재보고를 만들지 않는다.**
-- 단, **실제 내용 충돌이나 승인 범위 위반**이 있으면 기존대로 실패 처리한다.
-
-## P9. 지시·보고·승인 루프 (Instruction–Report–Approval Loop)
-
-> 코지(CEO)·코비(PM)·클로(DEV) 간 작업 전달·승인 흐름. 목적: **중복 지시 방지 + 승인 흐름 고정.**
-> 원칙은 [GLOBAL.md §7](GLOBAL.md)(모든 지시·보고는 복붙 블록)·[§8](GLOBAL.md)(코지 승인 → 코비 → 클로 체인)가 소유 — 본 절은 절차만 다룬다(중복 금지).
-
-### P9.1 표준 루프
-
-1. **코지·코비 의논** — 문제·방향·작업 범위·주의사항을 먼저 정리한다.
-2. **코비가 작업지시서 작성** — [P3.2 표준 지시 형식](PLAYBOOK.md).
-3. **코지가 클로에게 직접 전달** — 코비가 아니라 코지가 지시서를 클로에게 넘긴다.
-4. **코지가 코비에게 전달 상태 통보** — 예: "클로한테 전달했어 / 승인했어 / 클로 작업 중이야".
-5. **코비 대기(중복 금지)** — 위 통보를 들으면 코비는 **같은 지시서를 다시 만들지 않는다**(중복 지시·재전달 금지). 클로 완료 보고를 기다린다.
-6. **클로 보고 전달** — 클로가 완료 보고([P3.3](PLAYBOOK.md))를 하면 코지가 코비에게 전달한다.
-7. **코비 검수·설명** — 코비는 보고를 검수해 코지에게 설명한다: 완료 / 미완료 / 문제 / 위험 / 다음 액션 / **승인·보류·반려** 판정.
-8. **코지 승인 → 다음 지시서** — 코지가 다음 작업을 승인하면, 그때 비로소 코비가 다음 작업지시서를 만든다.
-
-### P9.2 규칙
-
-- **중복 지시 금지**: 코지가 전달/승인/진행중을 통보한 지시서는 코비가 다시 만들거나 같은 내용을 재전달하지 않는다.
-- **승인 게이트**: 코지 승인 전에는 코비가 다음 작업지시서를 먼저 내지 않는다.
-- **정보 반영**: 클로 작업 중 코지·코비가 나눈 정보(새 요구사항·발견된 문제·제품 방향·테스트 결과·주의사항·금지사항·다음 우선순위)는 **다음 작업지시서에 반영**한다.
-- **오해 방지**: "코비가 지시서를 아예 안 만든다"는 뜻이 아니다 — 코비는 **코지 승인 후** 다음 지시서를 만든다.
-
-## P10. AI Video Production 작업 절차
-
-> AI Video Production 작업 진입 **라우팅**. SSOT 원본은 `ai-video-production` 저장소에만 있으며,
-> 여기(ops)에는 내용을 **복제하지 않고 진입 경로만** 둔다.
-
-### P10.1 진입 순서 (반드시)
-
-1. cozybuilder-ops: [GLOBAL.md](GLOBAL.md) → [PLAYBOOK.md](PLAYBOOK.md) → [PROJECTS.md](PROJECTS.md)
-2. `ai-video-production` 저장소 진입
-3. 아래 문서를 **순서대로** 확인:
-   1. `docs/templates/production_brief_v1.md` — 프로젝트 입력 SSOT
-   2. `docs/operations/operating_philosophy.md`
-   3. `docs/operations/operating_rules.md`
-   4. `docs/operations/status.md`
-   5. 현재 프로젝트 문서
-
-### P10.2 규칙
-
-- **Production Brief를 확인하지 않고 영상 기획·시나리오·Scene Brief 작성 금지.**
-- Production Brief 원본 SSOT는 `ai-video-production`이 소유한다. ops는 진입 경로만 두고 **내용을 복제하지 않는다**([GLOBAL.md §2](GLOBAL.md)).
-
-## P11. 에이전트 운영 도입 절차 (민감 업무 사람 승인 게이트)
-
-> 원칙·범위는 [GLOBAL.md §8.4 에이전트 기반 운영 확장](GLOBAL.md)이 소유. 여기선 **도입 시 절차**만 둔다(중복 금지).
-
-- 에이전트 고객관리·운영 자동화는 **앱/서비스 안정화 이후 단계적으로만** 도입한다(지금 실행 아님).
-- **사람 승인 게이트(필수)**: 개인정보·고객 데이터·결제·환불·약관·세무·법률·**고객 자동 발송 메시지**는 발송/실행 전 **사람 승인**을 거치고 승인 로그·증빙을 남긴다.
-- 비용은 도입 전 [GLOBAL.md §1.4 매입 < 매출](GLOBAL.md) 기준으로 검토한다(자동화 편의만으로 API·SaaS·서버 무제한 증설 금지).
-
----
-
-## P12. 개발환경 확인 규칙 (재질문 방지)
-
-> 환경 정보의 SSOT = [docs/operations/DEVELOPMENT_ENVIRONMENT.md](docs/operations/DEVELOPMENT_ENVIRONMENT.md).
-
-1. 개발환경(장비·경로·도구·콘솔·도메인·빌드/서명) 관련 질문 전에 **DEVELOPMENT_ENVIRONMENT.md를 먼저 확인**한다.
-2. 문서에 **확인된 값이 있으면 코지에게 다시 묻지 않는다.**
-3. 값이 바뀌었을 가능성이 있으면 **먼저 로컬·콘솔·저장소에서 자체 확인**한다(명령 실측·API·git).
-4. 자체 확인이 불가능하고 **작업에 반드시 필요한 경우에만** 코지에게 묻는다.
-5. 코지에게 확인받은 새 정보는 **해당 작업 종료 전에 SSOT에 반영**한다.
-6. **대화 기억보다 환경 SSOT를 우선**한다([GLOBAL.md §7.1](GLOBAL.md)).
-7. secret은 SSOT에 기록하지 않는다 — **보관 위치·갱신일·담당만** 기록한다.
-
----
-
-## P13. 고비용 외부 연동 장애 진단 절차
-
-> 유래: CozyRent Google 로그인 진단 10시간 지연 사건 — 상세는 [docs/operations/PM_INCIDENTS.md](docs/operations/PM_INCIDENTS.md) §INC-1이 소유.
-> 원칙: **"결함 발견 ≠ 근본 원인 확정"** · **"배포는 진단 수단의 마지막 단계이지 첫 단계가 아니다."**
-
-**적용 대상**: Google/Apple 로그인 · Play/App Store · 결제 · OAuth · Supabase/Firebase · DNS·도메인 ·
-클라우드·외부 API 등 **배포 반영에 긴 시간이 걸리는 모든 외부 연동 장애**.
-
-**필수 순서** (건너뛰기 금지):
-
-1. **SSOT·기준값 원본 확인** — 기준값(ID·키·지문·도메인)의 원본 소유자(콘솔/문서)를 먼저 확정.
-2. **전체 계보도 작성** — 값의 생성지 → 파생 적용 위치 → 런타임 사용처를 한 장으로 정리(예: Play 서명 → Android OAuth Client → Web Client → 앱 env → 번들 → 런타임 요청 → 서버 검증).
-3. **파생 적용 위치 전수 대조** — 이미지 육안 비교가 아니라 **복사값·byte-level·명령 실측** 우선.
-4. **로그상 정확한 실패 경계 확인** — 어느 단계까지 성공하고 어디서 거부되는지 확정.
-5. **읽기 전용 검증 전수 수행** — 배포 없이 가능한 확인을 전부 먼저 소진.
-6. **가설 목록·반증 기준 작성** — 각 가설을 "무엇이 나오면 배제되는가"와 함께 기록. 성공 검증 전에는 **"원인 후보"로만** 표기.
-7. **한 번의 실험으로 최대한 많은 가설 분리** — 배포 전 아래 4문에 모두 답하지 못하면 업로드 금지:
-   ① 이번 빌드에서 정확히 무엇 하나가 바뀌는가?
-   ② 결과 A/B/C 각각 무엇을 확정·배제하는가?
-   ③ 실패 시 다음 분기까지 로그로 판정 가능한가?
-   ④ 동일 결과가 나왔을 때 또 업로드가 필요한가?
-8. **사용자 승인 후 변경·배포** — 콘솔 생성·수정·삭제 **가능성**이 있는 절차는 "읽기 전용"이라 표현하지 않는다. 사용자 직접 작업·대기시간도 비용으로 명시.
-9. **성공 종단점까지 검증** — 중간 단계 성공을 원인 확정으로 승격하지 않는다.
-10. **실패하면 사고 기록과 규칙 갱신** — [PM_INCIDENTS.md](docs/operations/PM_INCIDENTS.md)에 기록하고 본 절차를 보강한다.
-
-**PM 경계**: 원래 승인된 제품 계획의 포기·축소·대체는 근거 보고 → **코지 승인** → 문서 반영 후에만 실행한다.
-같은 유형의 실수 재발은 단순 실수가 아니라 **운영 규칙 위반**으로 판정한다.
-
----
-
-_Common Brain OS v1.0 · cozybuilder-ops_
+기본 필독 문서의 크기 초과, 허용되지 않은 섹션, 이력 누적, archive 표식 누락,
+자동수정 승인 불일치는 실패로 처리한다.
