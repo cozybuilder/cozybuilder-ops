@@ -17,6 +17,7 @@
 | 프로젝트 | 상태 | 기본 브랜치 | 원격(origin) | STATUS 포인터 |
 |---|---|---|---|---|
 | cozybuilder-ops | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-ops | (본 저장소 — 운영 허브) |
+| mvp-idea | 🟢 active | `main` | github.com/cozybuilder/mvp-idea (PRIVATE) | docs/STATUS.md |
 | homepage | 🟢 active | `main` | github.com/cozybuilder/cozybuilder-homepage | docs/STATUS.md |
 | ebookPublishingSystem | 🟢 active | `main` | github.com/cozybuilder/ebookPublishingSystem | STATUS.md |
 | gratitude-note | 🟢 active | `master` | github.com/cozybuilder/gratitude-note | docs/STATUS.md |
