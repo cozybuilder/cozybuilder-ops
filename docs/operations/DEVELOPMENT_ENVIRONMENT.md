@@ -72,8 +72,8 @@
 | OS | **Android 16** (API 36) · One UI 버전코드 80500 |
 | 화면 | 1080×2340 · 480dpi |
 | 연결 | USB 상시 연결 · USB 디버깅 승인(adb state=`device`) |
-| 용도 | CozyRent Play **내부 테스트** 실기기 · 코지임대 설치본 = **Play App Signing 재서명본**(v15 · installer=com.android.vending) |
-| 절대규칙 | uninstall·pm clear·공장초기화·실데이터 수정 금지 · 업데이트는 Play 경유(로컬 APK는 서명 불일치로 설치 불가 — §7) |
+| 용도 | CozyRent Play **내부 테스트 QA 전용 기기**(installer=com.android.vending 설치본 검수 대상). **실제 사용자·운영 데이터를 저장하는 기기가 아니다.** |
+| 기본 정책 | **기본값은 데이터 보존**(임의 초기화 금지). 코지의 명시적 검수 승인이 있는 회차에 한해 **CozyRent 앱 단위 `pm clear`·UI QA 입력을 허용**한다(승인마다 대상·범위를 재확인). 공장초기화와 CozyRent 외 다른 앱의 데이터 변경은 이 승인 범위에 포함되지 않으며 **별도 승인**이 필요하다. 업데이트는 Play 경유가 기본(로컬 APK는 서명 불일치로 설치 불가 — §7); Play App Signing 인증서로 서명되지 않은 로컬 debug/release APK를 이 기기에 직접 설치하지 않는다. |
 
 **iPhone — [미확인]** — 실보유·연결 확인된 iPhone 없음. 후보·계획은 기재하지 않는다.
 
@@ -223,7 +223,7 @@ Capacitor 8.4.1(core/android) · Gradle wrapper 8.14.3. (다른 프로젝트의 
 | 산출물 경로 | AAB `android/app/build/outputs/bundle/release/` · APK `…/apk/release/` |
 | 빌드 env | `vite build` 시점의 `.env`(git 미추적)가 번들에 포함 — 공개값만: `VITE_SUPABASE_URL`·`VITE_SUPABASE_PUBLISHABLE_KEY`·`VITE_GOOGLE_WEB_CLIENT_ID`·(승인 시)`VITE_COMMERCE_GATE_ENABLED` |
 | 번들 금지 | Google OAuth **Client Secret** · service_role · SMTP 비밀번호 · keystore 값 — 번들 grep 검증을 빌드 검증 항목에 포함 |
-| adb 정책 | `install -r`만(데이터 보존) · uninstall/pm clear/재설치 금지 — 상세는 cozyrent AI_CONTEXT 소유 |
+| adb 정책 | 기본은 `install -r`만(데이터 보존). `uninstall`·`pm clear`·재설치는 §1.4의 QA 전용 기기 승인 경계를 따른다(코지의 회차별 명시 승인 없이는 금지) — 상세는 cozyrent AI_CONTEXT 소유 |
 
 ---
 

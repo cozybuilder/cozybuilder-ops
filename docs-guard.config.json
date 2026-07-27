@@ -359,6 +359,13 @@
       "owns": [
         "business-model-library"
       ]
+    },
+    {
+      "root": "docs/operations/incidents",
+      "class": "incident-detail",
+      "owns": [
+        "operations-incident-records"
+      ]
     }
   ],
   "ownershipRegistryRoots": [
