@@ -157,3 +157,9 @@
   BUILD_HEAD), 자동 가드를 추가하기 전까지 그 항목을 완료로 처리하지 않는다.
 - 최종 Git 사실 확인 절차는 [DOCUMENTATION_MAINTENANCE.md §1.1](DOCUMENTATION_MAINTENANCE.md)이
   단독 소유한다(여기서 복제하지 않는다).
+- **신규·수정 GitHub Actions workflow는 로컬 YAML 확인·코드 리뷰만으로 완료 처리하지
+  않는다** — push 후 그 commit의 실제 원격 workflow run이 PASS해야 완료한다. 실행이
+  생성되지 않거나 권한·설정 문제로 확인할 수 없으면 PASS로 추정하지 않고 BLOCKED로
+  보고한다. 이는 "기계적으로 검증 가능한 사실"의 한 사례다 — 외부 실행환경에서만
+  검증 가능한 산출물은 그 실제 환경의 종단 증거가 완료 근거이며, 로컬 재현이나 코드
+  검토로 대체하지 않는다.
