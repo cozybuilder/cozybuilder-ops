@@ -26,6 +26,7 @@
 | house_rental | 📋 planned | (git 미초기화) | (없음) | (미작성) |
 | ShortsFactory | 📋 planned | (코드/폴더 없음) | (없음) | (미작성) |
 | cozyrent | 🟢 active | `main` | github.com/cozybuilder/cozyrent (PRIVATE) | docs/STATUS.md |
+| cozybuilder-body | 📋 planned | `main` | github.com/cozybuilder/cozybuilder-body (PRIVATE) | docs/STATUS.md |
 | fieldnote-ai | 🟢 active | `main` | github.com/cozybuilder/fieldnote-ai (PRIVATE) | docs/STATUS.md |
 | lifetimestudio | 🟢 active | `main` | github.com/cozybuilder/lifetimestudio | docs/STATUS.md |
 | ai-promotion | 🟢 active | `main` | github.com/cozybuilder/ai-promotion (PRIVATE) | docs/STATUS.md |
